@@ -1,15 +1,41 @@
-<!doctype html>
+{% load static %}
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="One Page Corporate HTML Template">
+    <meta name="author" content="">
+    <link rel="icon" href="{% static 'images/favicon.ico' %}">
+
+    <!-- Title -->
     <title>PanaceaHRMS</title>
+
+    <!-- Necessary CSS Files -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">            									
+    <!-- Bootstrap CSS Only GRID -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/google-font.css' %}">              									
+    <!-- Google Font -->
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">         									
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="{% static 'css/swiper.min.css' %}">               									
+    <!-- Swiper slider -->
+    <link rel="stylesheet" href="{% static 'css/jquery.mb.YTPlayer.min.css' %}">   									
+    <!-- Video background -->
+    <link rel="stylesheet" href="{% static 'css/template.css' %}">                 									
+    <!-- Template CSS -->
+
+    
 </head>
 <body>
 
-    {% include 'header.html' %}
+<!-- Wrapper -->
+<div class="site-wrapper">
+
+   {% include 'header.html' %}
 
     {% block content %}
 
@@ -17,5 +43,49 @@
 
     {% include 'footer.html' %}
 
+</div>
+<!-- End Wrapper -->
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="{% static 'js/jquery-1.12.4.min.js' %}"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+
+<script src="{% static 'js/jquery.countimator.min.js' %}"></script>        
+<!-- Counter -->
+<script src="{% static 'js/jquery.sticky.min.js' %}"></script>             
+<!-- Sticky Header -->
+<script src="{% static 'js/swiper.jquery.min.js' %}"></script>             
+<!-- Carousel Slider -->
+<script src="{% static 'js/isotope.pkgd.min.js' %}"></script>              
+<!-- Isotope -->
+<script src="{% static 'js/jquery.tabslet.min.js' %}"></script>            
+<!-- Tabs -->
+<script src="{% static 'js/tweetie.min.js' %}"></script>                   
+<!-- Tweets -->
+<script src="{% static 'js/jquery.scrollUp.min.js' %}"></script>           
+<!-- Scroll up -->
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script>   
+<!-- Google map -->
+<script src="{% static 'js/imagesloaded.pkgd.min.js' %}"></script>         
+<!-- Header slider scripts -->
+<script src="{% static 'js/hammer.min.js' %}"></script>
+<script src="{% static 'js/sequence.min.js' %}"></script>
+<script src="{% static 'js/venobox.min.js' %}"></script>                   
+<!-- Light box -->
+<script src="{% static 'js/jquery.mb.YTPlayer.min.js' %}"></script>        
+<!-- Video background -->
+<script src="{% static 'js/template.js' %}"></script>                      
+<!-- Theme Options -->
+
+<script src="{% static 'js/retina.js' %}"></script>                      
+<!-- Retina js -->
+<script src="{% static 'js/retina.min.js' %}"></script>                  
+<!-- Retina js -->
+
 </body>
+
 </html>
+
+    
+
