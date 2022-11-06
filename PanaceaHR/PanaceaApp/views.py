@@ -2,5 +2,5 @@ from django.shortcuts import render, redirect
 
 # Create your views here.
 def home(request):
-    context = []
-    return render(request, 'templates/home.html', context)
+    context = {}
+    return render(request, 'PanaceaApp/home.html', context)
