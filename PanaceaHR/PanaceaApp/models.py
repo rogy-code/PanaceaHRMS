@@ -6,6 +6,7 @@ class Employee(models.Model):
     fullname = models.CharField(max_length=255, blank=True, null=True)
     dateofbirth = models.DateField(blank=True, null=True)
     gender = models.CharField(max_length=20, blank=True, null=True)
+    position = models.CharField(max_length=50, blank=True, null=True)
     idnumber = models.CharField(max_length=20, blank=True, null=True)
     telephone = models.CharField(max_length=20, blank=True, null=True)
     idphoto = models.ImageField(upload_to='media', blank=True, null=True)

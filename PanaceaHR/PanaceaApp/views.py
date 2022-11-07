@@ -11,6 +11,8 @@ def addEmployee(request):
     context = {}
     return render(request, 'PanaceaApp/addEmployee.html', context)
 
-def employeeDetail(request):
-    context = {}
+def employeeDetail(request, pk):
+    employee = Employee.objects.get(id=pk)
+    employees = Employee.objects.all()
+    context = {'employee': employee, 'employees': employees}
     return render(request, 'PanaceaApp/employeeDetail.html', context)

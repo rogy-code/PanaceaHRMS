@@ -79,21 +79,21 @@
                                     <th>date Of Birth</th>
                                     <th>Date Joined</th>
                                     <th>Gender</th>
+                                    <th>Position</th>
                                 </tr>
 
                                 {% for employee in employees %}
                                 <tr>
                                     <td class="font-weight-600">{{forloop.counter}}</td>
                                     <td class="font-weight-600"><a class="font-weight-600"
-                                            href="#">{{employee.fullname}}</a></td>
+                                            href="{% url 'employeeDetail' employee.id %}">{{employee.fullname}}</a></td>
                                     <td class="font-weight-600">{{employee.idnumber}}</td>
                                     <td class="font-weight-600">{{employee.telephone}}</td>
                                     <td class="font-weight-600">{{employee.dateofbirth}}</td>
                                     <td class="font-weight-600">{{employee.created}}</td>
                                     <td class="font-weight-600">{{employee.gender}}</td>
-                                    <td>
-                                        <a href="#" class="btn btn-primary">Detail</a>
-                                    </td>
+                                    <td class="font-weight-600">{{employee.position}}</td>
+    
                                 </tr>
                                 {% endfor %}
 
