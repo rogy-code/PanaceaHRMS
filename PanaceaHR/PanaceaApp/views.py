@@ -10,3 +10,7 @@ def home(request):
 def addEmployee(request):
     context = {}
     return render(request, 'PanaceaApp/addEmployee.html', context)
+
+def employeeDetail(request):
+    context = {}
+    return render(request, 'PanaceaApp/employeeDetail.html', context)
