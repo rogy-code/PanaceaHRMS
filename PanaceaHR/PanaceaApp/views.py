@@ -4,3 +4,7 @@ from django.shortcuts import render
 def home(request):
     context = {}
     return render(request, 'PanaceaApp/home.html', context)
+
+def addEmployee(request):
+    context = {}
+    return render(request, 'PanaceaApp/addEmployee.html', context)
