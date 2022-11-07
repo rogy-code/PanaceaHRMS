@@ -16,3 +16,7 @@ def employeeDetail(request, pk):
     employees = Employee.objects.all()
     context = {'employee': employee, 'employees': employees}
     return render(request, 'PanaceaApp/employeeDetail.html', context)
+
+def calender(request):
+    context = {}
+    return render(request, 'PanaceaApp/calender.html', context)

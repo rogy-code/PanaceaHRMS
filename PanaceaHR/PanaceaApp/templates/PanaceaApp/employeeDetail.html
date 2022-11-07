@@ -42,7 +42,7 @@
                         <div class="profile-widget-description">
                             <div class="profile-widget-name">{{employee.fullname}}<div
                                     class="text-muted d-inline font-weight-normal">
-                                    <div class="slash"></div> Web Developer
+                                    <div class="slash"></div> {{employee.position}}
                                 </div>
                             </div>
                         </div>
@@ -58,46 +58,40 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="form-group col-md-6 col-12">
-                                        <label>First Name</label>
-                                        <input type="text" class="form-control" value="Michelle" required="">
+                                        <label>Name</label>
+                                        <input type="text" class="form-control" value="{{employee.fullname}}" required="">
                                         <div class="invalid-feedback">Please fill in the first name</div>
                                     </div>
                                     <div class="form-group col-md-6 col-12">
-                                        <label>Last Name</label>
-                                        <input type="text" class="form-control" value="Green" required="">
+                                        <label>Id Number</label>
+                                        <input type="text" class="form-control" value="{{employee.idnumber}}" required="">
                                         <div class="invalid-feedback">Please fill in the last name</div>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="form-group col-md-7 col-12">
+                                    <div class="form-group col-md-6 col-12">
                                         <label>Email</label>
-                                        <input type="email" class="form-control" value="Michelle@Green.com" required="">
+                                        <input type="email" class="form-control" value="{{employee.email}}" required="">
                                         <div class="invalid-feedback">Please fill in the email</div>
                                     </div>
-                                    <div class="form-group col-md-5 col-12">
+                                    <div class="form-group col-md-6 col-12">
                                         <label>Phone</label>
-                                        <input type="tel" class="form-control" value="">
+                                        <input type="tel" class="form-control" value="{{employee.telephone}}">
                                     </div>
                                 </div>
+
                                 <div class="row">
-                                    <div class="form-group col-12">
-                                        <label>Bio</label>
-                                        <textarea
-                                            class="form-control summernote-simple">Michelle Green is a superhero name in <b>USA</b>, especially in my family. He is not a fictional character but an original hero in my family, a hero for his children and for his wife. So, I use the name as a user in this template. Not a tribute, I'm just bored with <b>'John Doe'</b>.</textarea>
+                                    <div class="form-group col-md-6 col-12">
+                                        <label>Date of Birth</label>
+                                        <input type="" class="form-control" value="{{employee.dateofbirth}}" required="">
+                                        <div class="invalid-feedback">Please fill in the date</div>
+                                    </div>
+                                    <div class="form-group col-md-6 col-12">
+                                        <label>Gender</label>
+                                        <input type="tel" class="form-control" value="{{employee.gender}}">
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="form-group mb-0 col-12">
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" name="remember" class="custom-control-input"
-                                                id="newsletter">
-                                            <label class="custom-control-label" for="newsletter">Subscribe to
-                                                newsletter</label>
-                                            <div class="text-muted form-text">You will get new information about
-                                                products, offers and promotions</div>
-                                        </div>
-                                    </div>
-                                </div>
+                                
                             </div>
                             <div class="card-footer text-right">
                                 <button class="btn btn-primary">Save Changes</button>
