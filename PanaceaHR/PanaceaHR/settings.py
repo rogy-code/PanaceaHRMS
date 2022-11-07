@@ -28,7 +28,9 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
 
 #     app here
-    "PanaceaApp",
+    'PanaceaApp',
+    'accounts'
+    
 ]
 
 MIDDLEWARE = [
