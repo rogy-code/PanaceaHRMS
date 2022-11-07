@@ -72,8 +72,10 @@
                         <div class="table-responsive table-invoice">
                             <table class="table table-striped">
                                 <tr>
+                                    <th>#</th>
                                     <th>Names</th>
                                     <th>ID Number</th>
+                                    <th>Phone Number</th>
                                     <th>date Of Birth</th>
                                     <th>Date Joined</th>
                                     <th>Gender</th>
@@ -81,9 +83,11 @@
 
                                 {% for employee in employees %}
                                 <tr>
+                                    <td class="font-weight-600">{{forloop.counter}}</td>
                                     <td class="font-weight-600"><a class="font-weight-600"
                                             href="#">{{employee.fullname}}</a></td>
                                     <td class="font-weight-600">{{employee.idnumber}}</td>
+                                    <td class="font-weight-600">{{employee.telephone}}</td>
                                     <td class="font-weight-600">{{employee.dateofbirth}}</td>
                                     <td class="font-weight-600">{{employee.created}}</td>
                                     <td class="font-weight-600">{{employee.gender}}</td>
