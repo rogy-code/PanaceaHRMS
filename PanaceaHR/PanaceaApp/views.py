@@ -1,5 +1,7 @@
 from django.shortcuts import render
+from django.contrib import messages
 from . models import Employee
+from .forms import AddEmployeeForm
 
 # Create your views here.
 def home(request):
@@ -8,8 +10,22 @@ def home(request):
     return render(request, 'PanaceaApp/home.html', context)
 
 def addEmployee(request):
-    
-    context = {}
+    form = AddEmployeeForm()
+    if request.method == 'POST':
+        Employee.objects.create(
+            fullname=request.POST.get('fullname'),
+            email=request.POST.get('email'),
+            telephone=request.POST.get('telephone'),
+            idnumber=request.POST.get('idnumber'),
+            position=request.POST.get('position'),
+            gender=request.POST.get('gender'),
+            dateofbirth=request.POST.get('dateofbirth'),
+            # idphoto=request.FILES['idphoto'],
+            # nhifphoto=request.FILES['nhifphoto'],
+            # inssfphoto=request.FILES['nssfphoto'],
+        )
+        messages.success(request, 'user added!!!')
+    context = {'form': form}
     return render(request, 'PanaceaApp/addEmployee.html', context)
 
 def employeeDetail(request, pk):

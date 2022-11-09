@@ -27,7 +27,9 @@
             <div class="row">
                
                 <div class="col-md-10">
-                    <form id="setting-form">
+                    <form method="POST" id="setting-form">
+                        {% csrf_token %}
+
                         <div class="card" id="settings-card">
                             <div class="card-header">
                                 <h4>Add Employee</h4>
@@ -37,14 +39,14 @@
                                 <div class="form-group row align-items-center">
                                     <label for="site-title" class="form-control-label col-sm-3 text-md-right">Full Name</label>
                                     <div class="col-sm-6 col-md-9">
-                                        <input type="text" name="full_name" class="form-control" id="site-title">
+                                        <input type="text" name="fullname" class="form-control" id="site-title">
                                     </div>
                                 </div>
 
                                 <div class="form-group row align-items-center">
                                     <label for="site-title" class="form-control-label col-sm-3 text-md-right">Date Of Birth</label>
                                     <div class="col-sm-6 col-md-9">
-                                        <input type="date" name="date-of-birth" class="form-control" id="site-title">
+                                        <input type="date" name="dateofbirth" class="form-control" id="site-title">
                                     </div>
                                 </div>
 
@@ -79,7 +81,7 @@
                                 <div class="form-group row align-items-center">
                                     <label for="site-title" class="form-control-label col-sm-3 text-md-right">ID Number</label>
                                     <div class="col-sm-6 col-md-9">
-                                        <input type="number" name="idno" class="form-control" id="site-title">
+                                        <input type="number" name="idnumber" class="form-control" id="site-title">
                                     </div>
                                 </div>
                                 
@@ -118,8 +120,8 @@
                               
                             </div>
                             <div class="card-footer bg-whitesmoke text-md-right">
-                                <button class="btn btn-primary" id="save-btn">Save Changes</button>
-                                <button class="btn btn-secondary" type="button">Reset</button>
+                                <button type="submit" class="btn btn-primary" id="save-btn">Save Changes</button>
+                                <!-- <button class="btn btn-secondary" type="button">Reset</button> -->
                             </div>
                         </div>
                     </form>
