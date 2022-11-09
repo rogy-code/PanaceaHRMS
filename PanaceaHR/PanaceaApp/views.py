@@ -11,7 +11,7 @@ def home(request):
 
 def addEmployee(request):
     form = AddEmployeeForm()
-    if request.method == 'POST':
+    if request.method == 'POST' and request.FILES:
         Employee.objects.create(
             fullname=request.POST.get('fullname'),
             email=request.POST.get('email'),
@@ -20,9 +20,9 @@ def addEmployee(request):
             position=request.POST.get('position'),
             gender=request.POST.get('gender'),
             dateofbirth=request.POST.get('dateofbirth'),
-            # idphoto=request.FILES['idphoto'],
-            # nhifphoto=request.FILES['nhifphoto'],
-            # inssfphoto=request.FILES['nssfphoto'],
+            idphoto=request.FILES['idphoto'],
+            nhifphoto=request.FILES['nhifphoto'],
+            nssfphoto=request.FILES['nssfphoto'],
         )
         messages.success(request, 'user added!!!')
     context = {'form': form}
