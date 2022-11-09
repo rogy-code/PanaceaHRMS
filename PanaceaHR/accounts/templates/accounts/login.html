@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-<title>Login &mdash; CodiePie</title>
+<title>Login &mdash; PanaceaHR</title>
 
 <!-- General CSS Files -->
 <link rel="stylesheet" href="{% static 'assets/modules/bootstrap/css/bootstrap.min.css' %}">
@@ -31,19 +31,29 @@
                         <!-- <img src="http://puffintheme.com/craft/codiepie/dist/assets/img/CodiePie-fill.svg" alt="logo" width="100" class="shadow-light rounded-circle"> -->
                     </div>
                     <div class="card card-primary">
+                        {% if messages %}
+                        <ul class="messages">
+                          {% for message in messages %}
+                          <li {% if message.tags %} class="{{ message.tags }} bg-success text-center text-light p-2 rounded-pill" {% endif %}>{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %} 
+                        
                         <div class="card-header">
-                            <a href="{% url 'home' %}">
+                            
                                 <h4>Panacea Human Resource System</h4>
-                            </a>
+                           
                             
                         </div>
                         <div class="card-body">
-                            <form method="POST" action="#" class="needs-validation" novalidate="">
+                            <form method="POST"  class="needs-validation" >
+                                {% csrf_token %}
+                                
                                 <div class="form-group">
-                                    <label for="email">Email</label>
-                                    <input id="email" type="email" class="form-control" name="email" tabindex="1" required autofocus>
+                                    <label for="email">username</label>
+                                    <input id="email" type="text" class="form-control" name="username" tabindex="1" required autofocus>
                                     <div class="invalid-feedback">
-                                        Please fill in your email
+                                        Please fill in your username
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -60,12 +70,7 @@
                                         please fill in your password
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" name="remember" class="custom-control-input" tabindex="3" id="remember-me">
-                                        <label class="custom-control-label" for="remember-me">Remember Me</label>
-                                    </div>
-                                </div>
+                                
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
                                     Login
@@ -75,11 +80,11 @@
                             
                         </div>
                     </div>
-                    <div class="mt-5 text-muted text-center">
+                    <!-- <div class="mt-5 text-muted text-center">
                         Don't have an account? <a href="auth-register.html">Create One</a>
-                    </div>
+                    </div> -->
                     <div class="simple-footer">
-                        Copyright &copy; CodiePie 2020
+                        Copyright &copy;PanaceaHR {% now 'Y' %}
                     </div>
                 </div>
             </div>
