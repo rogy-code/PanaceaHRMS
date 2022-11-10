@@ -1,0 +1,60 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+{% load static %}
+
+<!-- Start app main Content -->
+<div class="main-content">
+    <section class="section">
+        
+        <div class="row row-deck">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>employees</h4>
+                        <div class="card-header-action">
+                            <a href="{% url 'addEmployee' %}" class="btn btn-danger">Add Salary Record<i
+                                    class="fas fa-chevron-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-responsive table-invoice">
+                            <table class="table table-striped" id="table-1">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Names</th>
+                                        <th>Salary</th>
+                                        <th>Allowances</th>
+                                        <th>NHIF</th>
+                                        <th>NSSF</th>
+                                        <th>Net Salary</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for salary in salarys %}
+                                    <tr>
+                                        <td class="font-weight-600">{{forloop.counter}}</td>
+                                        <td class="font-weight-600"><a class="font-weight-600"
+                                                href="#">{{salary.employee.fullname}}</a>
+                                        </td>
+                                        <td class="font-weight-600">{{salary.salary}}</td>
+                                        <td class="font-weight-600">{{salary.allowance}}</td>
+                                        <td class="font-weight-600">{{salary.nhif}}</td>
+                                        <td class="font-weight-600">{{salary.nssf}}</td>
+                                        <td class="font-weight-600">{{salary.netSalary}}</td>
+
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+{% endblock %}
