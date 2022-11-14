@@ -1,12 +1,13 @@
 from django.shortcuts import render
 from django.contrib import messages
-from . models import Employee,Sallary
+from . models import Employee,Sallary,Department
 from .forms import AddEmployeeForm
 
 # Create your views here.
 def home(request):
     employees = Employee.objects.all()
-    context = {'employees': employees}
+    departments = Department.objects.all()
+    context = {'employees': employees, 'departments': departments}
     return render(request, 'PanaceaApp/home.html', context)
 
 def addEmployee(request):
@@ -38,6 +39,11 @@ def salary(request):
     salarys = Sallary.objects.all()
     context = {'salarys': salarys}
     return render(request, 'PanaceaApp/salary.html', context)
+
+def salaryDetail(request,pk):
+    salary = Sallary.objects.get(id=pk)
+    context = {'salary': salary}
+    return render(request, 'PanaceaApp/salaryDetail.html', context)
 
 def calender(request):
     context = {}

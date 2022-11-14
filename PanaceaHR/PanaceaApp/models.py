@@ -43,3 +43,7 @@ class Sallary(models.Model):
 
     def __str__(self):
         return self.employee.fullname[0:50]
+
+    @property
+    def netSalary(self):
+       return (self.salary + self.allowance)-(self.nhif + self.nssf)
