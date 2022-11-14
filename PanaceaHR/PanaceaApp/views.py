@@ -42,19 +42,24 @@ def salary(request):
 
 def salaryDetail(request,pk):
     salary = Sallary.objects.get(id=pk)
-    context = {'salary': salary}
+    employees = Employee.objects.all()
+    context = {'salary': salary, 'employees': employees}
     return render(request, 'PanaceaApp/salaryDetail.html', context)
 
 def addSalary(request):
+    salarys = Sallary.objects.all()
+    employees = Employee.objects.all()
+
     if request.method == 'POST':
         Sallary.objects.create(
-            fullname=request.POST.get('fullname'),
+            employee=request.POST.get('employee'),
+            salary=request.POST.get('salary'),
             allowance=request.POST.get('allowance'),
-            nhif=request.POST.get['nhif'],
-            nssf=request.POST.get['nssf'],
+            nssf=request.POST.get('nssf'),
+            nhif=request.POST.get('nhif'),
         )
         messages.success(request, 'salary record added!!!')
-    context = {}
+    context = {'employees': employees, 'salarys': salarys}
     return render(request, 'PanaceaApp/addSalary.html', context)
 
 

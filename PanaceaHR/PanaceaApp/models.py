@@ -43,7 +43,7 @@ class Sallary(models.Model):
     netSalary = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
 
     def __str__(self):
-        return self.employee.fullname[0:50]
+        return self.employee[0:50]
 
     @property
     def netSalary(self):

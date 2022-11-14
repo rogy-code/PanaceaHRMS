@@ -41,7 +41,11 @@
                                     <label for="site-title" class="form-control-label col-sm-3 text-md-right">Full
                                         Name</label>
                                     <div class="col-sm-6 col-md-9">
-                                        <input type="text" name="fullname" class="form-control" id="site-title">
+                                        <select type="text" name="employee" class="form-control" id="site-title">
+                                            {% for employee in employees %}
+                                            <option value="{{employee.fullname}}">{{employee.fullname}}</option>
+                                            {% endfor %}
+                                        </select>
                                     </div>
                                 </div>
 
