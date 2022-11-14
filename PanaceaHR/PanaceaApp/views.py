@@ -51,8 +51,11 @@ def addSalary(request):
     employees = Employee.objects.all()
 
     if request.method == 'POST':
+        employee = request.POST.get('employee')
+        employee = Employee.objects.get(fullname=employee)
+
         Sallary.objects.create(
-            employee=request.POST.get('employee'),
+            employee = Employee.fullname,
             salary=request.POST.get('salary'),
             allowance=request.POST.get('allowance'),
             nssf=request.POST.get('nssf'),
