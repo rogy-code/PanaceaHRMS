@@ -55,7 +55,6 @@ def addSalary(request):
         employee = Employee.objects.get(fullname=employee)
 
         Sallary.objects.create(
-            employee = Employee.fullname,
             salary=request.POST.get('salary'),
             allowance=request.POST.get('allowance'),
             nssf=request.POST.get('nssf'),
