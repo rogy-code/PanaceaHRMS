@@ -60,13 +60,13 @@
 
             </li>
     
-            <li class="menu-header">Sallary</li>
+            <li class="menu-header">Payroll</li>
             <li class="dropdown">
-                <a href="{% url 'salary' %}" class="nav-link "><i class="fas fa-th-large"></i> <span>Salary</span></a>
+                <a href="{% url 'salary' %}" class="nav-link "><i class="fas fa-th-large"></i> <span>Payroll</span></a>
                 <!-- <a href="#" class="nav-link "><i class="fas fa-th-large"></i> <span>NHIF</span></a>
                 <a href="#" class="nav-link "><i class="fas fa-th-large"></i> <span>NSSF</span></a>
                 <a href="#" class="nav-link "><i class="fas fa-th-large"></i> <span>Allowances</span></a> -->
-                <a href="#" class="nav-link "><i class="fas fa-th-large"></i> <span>Others</span></a>
+                <!-- <a href="#" class="nav-link "><i class="fas fa-th-large"></i> <span>Others</span></a> -->
                 
             </li>
            
@@ -75,19 +75,14 @@
                 <a href="{% url 'calender' %}" class="nav-link"><i class="far fa-user"></i> <span>Calender</span></a>
                
             </li>
-            <li><a href="auth-login.html">Login</a></li>
+            <!-- <li><a href="auth-login.html">Login</a></li> -->
             
-            <li class="menu-header">Settings</li>
+            <li class="menu-header">Additional</li>
             <li class="dropdown">
-                <a href="#" class="nav-link has-dropdown"><i class="far fa-user"></i> <span>Auth</span></a>
-                <ul class="dropdown-menu">
-                    <li><a href="auth-forgot-password.html">Forgot Password</a></li>
-                    <li><a href="auth-login.html">Login</a></li>
-                    <li><a href="auth-register.html">Register</a></li>
-                    <li><a href="auth-reset-password.html">Reset Password</a></li>
-                </ul>
+                <a href="{% url 'logout' %}" class="nav-link"><i class="far fa-user"></i> <span>Logout</span></a>
+               
             </li>
-            <li><a href="auth-login.html">Login</a></li>
+           
         </ul>
     </aside>
 </div>

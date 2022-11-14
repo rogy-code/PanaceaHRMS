@@ -14,7 +14,10 @@
                     <div class="card-header">
                         <h4>employees</h4>
                         <div class="card-header-action">
-                            <a href="{% url 'addEmployee' %}" class="btn btn-danger">Add Salary Record<i
+                    
+                                <button class="btn btn-success" onclick="printDiv()" type="submit">Print Payroll</button>
+                            
+                            <a href="{% url 'addEmployee' %}" class="btn btn-primary">Add Salary Record<i
                                     class="fas fa-chevron-right"></i></a>
                         </div>
                     </div>
@@ -36,8 +39,8 @@
                                     {% for salary in salarys %}
                                     <tr>
                                         <td class="font-weight-600">{{forloop.counter}}</td>
-                                        <td class="font-weight-600"><a class="font-weight-600"
-                                                href="#">{{salary.employee.fullname}}</a>
+                                        <td class="font-weight-600"><a class="font-weight-600" 
+                                            href="{% url 'salaryDetail' salary.id %}">{{salary.employee.fullname}}</a>
                                         </td>
                                         <td class="font-weight-600">{{salary.salary}}</td>
                                         <td class="font-weight-600">{{salary.allowance}}</td>
@@ -56,5 +59,7 @@
         </div>
     </section>
 </div>
+
+
 
 {% endblock %}

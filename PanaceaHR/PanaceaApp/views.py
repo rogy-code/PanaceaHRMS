@@ -45,6 +45,19 @@ def salaryDetail(request,pk):
     context = {'salary': salary}
     return render(request, 'PanaceaApp/salaryDetail.html', context)
 
+def addSalary(request):
+    if request.method == 'POST':
+        Sallary.objects.create(
+            fullname=request.POST.get('fullname'),
+            allowance=request.POST.get('allowance'),
+            nhif=request.POST.get['nhif'],
+            nssf=request.POST.get['nssf'],
+        )
+        messages.success(request, 'salary record added!!!')
+    context = {}
+    return render(request, 'PanaceaApp/addSalary.html', context)
+
+
 def calender(request):
     context = {}
     return render(request, 'PanaceaApp/calender.html', context)
