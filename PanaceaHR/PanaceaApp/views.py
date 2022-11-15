@@ -3,17 +3,25 @@ from django.contrib import messages
 from . models import Employee,Sallary,Department
 from .forms import AddEmployeeForm
 
+
 # Create your views here.
 def home(request):
     employees = Employee.objects.all()
     departments = Department.objects.all()
-    context = {'employees': employees, 'departments': departments}
+    salarys = Sallary.objects.all()
+    context = {'employees': employees, 'departments': departments, 'salarys': salarys}
     return render(request, 'PanaceaApp/home.html', context)
 
 def addEmployee(request):
     form = AddEmployeeForm()
+    departments = Department.objects.all()
+
     if request.method == 'POST' and request.FILES:
+        department_name = request.POST.get('department')
+        department, create = Department.objects.get_or_create(name=department_name)
+
         Employee.objects.create(
+            department = department,
             fullname=request.POST.get('fullname'),
             email=request.POST.get('email'),
             telephone=request.POST.get('telephone'),
@@ -26,7 +34,7 @@ def addEmployee(request):
             nssfphoto=request.FILES['nssfphoto'],
         )
         messages.success(request, 'user added!!!')
-    context = {'form': form}
+    context = {'form': form, 'departments': departments}
     return render(request, 'PanaceaApp/addEmployee.html', context)
 
 def employeeDetail(request, pk):

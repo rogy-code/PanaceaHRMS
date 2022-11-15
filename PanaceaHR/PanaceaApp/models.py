@@ -56,3 +56,7 @@ class Sallary(models.Model):
     @property
     def total_deductions(self):
         return (self.nhif + self.nssf)
+    
+    @property
+    def expenditure(self):
+        return (self.netSalary)

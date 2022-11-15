@@ -42,11 +42,11 @@
                                         <td class="font-weight-600"><a class="font-weight-600" 
                                             href="{% url 'salaryDetail' salary.id %}">{{salary.employee.fullname}}</a>
                                         </td>
-                                        <td class="font-weight-600">{{salary.salary}}</td>
-                                        <td class="font-weight-600">{{salary.allowance}}</td>
-                                        <td class="font-weight-600">{{salary.nhif}}</td>
-                                        <td class="font-weight-600">{{salary.nssf}}</td>
-                                        <td class="font-weight-600">{{salary.netSalary}}</td>
+                                        <td class="font-weight-600">Ksh. {{salary.salary}}</td>
+                                        <td class="font-weight-600">Ksh. {{salary.allowance}}</td>
+                                        <td class="font-weight-600">Ksh. {{salary.nhif}}</td>
+                                        <td class="font-weight-600">Ksh. {{salary.nssf}}</td>
+                                        <td class="font-weight-600">Ksh. {{salary.netSalary}}</td>
 
                                     </tr>
                                     {% endfor %}
