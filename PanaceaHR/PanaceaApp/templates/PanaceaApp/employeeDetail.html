@@ -52,7 +52,9 @@
                 </div>
                 <div class="col-8 col-md-8 col-lg-9">
                     <div class="card">
-                        <form method="post" class="needs-validation" novalidate="">
+                        <form method="post" class="needs-validation" nctype="multipart/form-data" novalidate="">
+                            {% csrf_token %}
+                            
                             <div class="card-header">
                                 <h4>Edit Profile</h4>
                             </div>
@@ -60,65 +62,65 @@
                                 <div class="row">
                                     <div class="form-group col-md-6 col-12">
                                         <label>Name</label>
-                                        <input type="text" class="form-control" value="{{employee.fullname}}" required="">
+                                        <input type="text" name="fullname" class="form-control" value="{{employee.fullname}}" required="">
                                         <div class="invalid-feedback">Please fill in the first name</div>
                                     </div>
                                     <div class="form-group col-md-6 col-12">
                                         <label>Id Number</label>
-                                        <input type="text" class="form-control" value="{{employee.idnumber}}" required="">
+                                        <input type="number" name="idnumber" class="form-control" value="{{employee.idnumber}}" required="">
                                         <div class="invalid-feedback">Please fill in the last name</div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-md-6 col-12">
                                         <label>Email</label>
-                                        <input type="email" class="form-control" value="{{employee.email}}" required="">
+                                        <input type="email" name="email" class="form-control" value="{{employee.email}}" required="">
                                         <div class="invalid-feedback">Please fill in the email</div>
                                     </div>
                                     <div class="form-group col-md-6 col-12">
                                         <label>Phone</label>
-                                        <input type="tel" class="form-control" value="{{employee.telephone}}">
+                                        <input type="tel" name="telephone" class="form-control" value="{{employee.telephone}}">
                                     </div>
                                 </div>
 
                                 <div class="row">
                                     <div class="form-group col-md-6 col-12">
                                         <label>Date of Birth</label>
-                                        <input type="" class="form-control" value="{{employee.dateofbirth}}" required="">
+                                        <input type="datetime" name="dateofbirth" class="form-control" value="{{employee.dateofbirth}}" required="">
                                         <div class="invalid-feedback">Please fill in the date</div>
                                     </div>
                                     <div class="form-group col-md-6 col-12">
                                         <label>Gender</label>
-                                        <input type="tel" class="form-control" value="{{employee.gender}}">
+                                        <input type="text" name="gender" class="form-control" value="{{employee.gender}}">
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-md-6 col-12">
                                         <label>Department</label>
-                                        <input type="" class="form-control" value="{{employee.department}}" required="">
+                                        <input type="text" name="department" class="form-control" value="{{employee.department}}" required="">
                                         <div class="invalid-feedback">Please fill in the date</div>
                                     </div>
                                     <div class="form-group col-md-6 col-12">
                                         <label>Position</label>
-                                        <input type="tel" class="form-control" value="{{employee.position}}">
+                                        <input type="text" name="position" class="form-control" value="{{employee.position}}">
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-md-6 col-12">
                                         <label>IdPhoto</label>
-                                        <input type="file" class="form-control" value="{{employee.idphoto}}" required="">
+                                        <input type="file" name="idphoto" class="form-control" value="{{employee.idphoto.url}}">
                                         <div class="invalid-feedback">Please upload correct file</div>
                                     </div>
                                     <div class="form-group col-md-6 col-12">
                                         <label>NssfPhoto</label>
-                                        <input type="file" class="form-control" value="{{employee.nssfphoto}}">
+                                        <input type="file" name="nssfphoto" class="form-control" value="{{employee.nssfphoto.url}}">
                                         <div class="invalid-feedback">Please upload correct file</div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-md-6 col-12">
                                         <label>NhifPhoto</label>
-                                        <input type="file" class="form-control" value="{{employee.nhifphoto}}" required="">
+                                        <input type="file" name="nhifphoto" class="form-control" value="{{employee.nhifphoto.url}}">
                                         <div class="invalid-feedback">Please upload correct file</div>
                                     </div>
                                     <div class="form-group col-md-6 col-12">
@@ -128,7 +130,10 @@
                                 
                             </div>
                             <div class="card-footer text-right">
-                                <button class="btn btn-primary">Save Changes</button>
+                                <button class="btn btn-success">Save Changes</button>
+                                <a href="{{request.META.HTTP_REFERER}}" class="btn btn-primary"
+                                        type="button">Cancel</a>
+                                </div>
                             </div>
                         </form>
                     </div>

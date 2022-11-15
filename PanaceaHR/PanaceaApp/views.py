@@ -1,6 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib import messages
-from . models import Employee,Sallary,Department
+from . models import Employee, Sallary, Department
 from .forms import AddEmployeeForm
 
 
@@ -9,8 +9,10 @@ def home(request):
     employees = Employee.objects.all()
     departments = Department.objects.all()
     salarys = Sallary.objects.all()
-    context = {'employees': employees, 'departments': departments, 'salarys': salarys}
+    context = {'employees': employees,
+               'departments': departments, 'salarys': salarys}
     return render(request, 'PanaceaApp/home.html', context)
+
 
 def addEmployee(request):
     form = AddEmployeeForm()
@@ -18,10 +20,11 @@ def addEmployee(request):
 
     if request.method == 'POST' and request.FILES:
         department_name = request.POST.get('department')
-        department, create = Department.objects.get_or_create(name=department_name)
+        department, create = Department.objects.get_or_create(
+            name=department_name)
 
         Employee.objects.create(
-            department = department,
+            department=department,
             fullname=request.POST.get('fullname'),
             email=request.POST.get('email'),
             telephone=request.POST.get('telephone'),
@@ -37,22 +40,47 @@ def addEmployee(request):
     context = {'form': form, 'departments': departments}
     return render(request, 'PanaceaApp/addEmployee.html', context)
 
+
 def employeeDetail(request, pk):
     employee = Employee.objects.get(id=pk)
+    form = AddEmployeeForm(instance=employee)
     employees = Employee.objects.all()
-    context = {'employee': employee, 'employees': employees}
+
+    if request.method == 'POST' and request.FILES:
+        department_name = request.POST.get('department')
+        department, create = Department.objects.get_or_create(name=department_name)
+
+        employee.department = department,
+        employee.fullname = request.POST.get('fullname'),
+        employee.email = request.POST.get('email'),
+        employee.telephone = request.POST.get('telephone'),
+        employee.idnumber = request.POST.get('idnumber'),
+        employee.position = request.POST.get('position'),
+        employee.gender = request.POST.get('gender'),
+        employee.dateofbirth = request.POST.get('dateofbirth'),
+        employee.idphoto = request.FILES['idphoto'],
+        employee.nhifphoto = request.FILES['nhifphoto'],
+        employee.nssfphoto = request.FILES['nssfphoto'],
+        employee.save()
+        return redirect('home')
+        messages.success(request, 'employee updated!!!')
+
+    context = {'employee': employee, 'employees': employees, 'form': form}
     return render(request, 'PanaceaApp/employeeDetail.html', context)
+
 
 def salary(request):
     salarys = Sallary.objects.all()
     context = {'salarys': salarys}
     return render(request, 'PanaceaApp/salary.html', context)
 
-def salaryDetail(request,pk):
+
+def salaryDetail(request, pk):
     salary = Sallary.objects.get(id=pk)
     employees = Employee.objects.all()
     context = {'salary': salary, 'employees': employees}
     return render(request, 'PanaceaApp/salaryDetail.html', context)
+
 
 def addSalary(request):
     salarys = Sallary.objects.all()
@@ -60,7 +88,8 @@ def addSalary(request):
 
     if request.method == 'POST':
         employee_name = request.POST.get('employee')
-        employee, create = Employee.objects.get_or_create(fullname=employee_name)
+        employee, create = Employee.objects.get_or_create(
+            fullname=employee_name)
 
         Sallary.objects.create(
             employee=employee,
