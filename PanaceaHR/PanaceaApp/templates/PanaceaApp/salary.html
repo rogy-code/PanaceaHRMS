@@ -33,6 +33,8 @@
                                         <th>NHIF</th>
                                         <th>NSSF</th>
                                         <th>Net Salary</th>
+                                        <th>Action</th>
+                                        
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -47,7 +49,7 @@
                                         <td class="font-weight-600">Ksh. {{salary.nhif}}</td>
                                         <td class="font-weight-600">Ksh. {{salary.nssf}}</td>
                                         <td class="font-weight-600">Ksh. {{salary.netSalary}}</td>
-
+                                        <td><a href="{{request.META.HTTP_REFERER}}" class="btn btn-danger">Delete</a></td>
                                     </tr>
                                     {% endfor %}
                                 </tbody>

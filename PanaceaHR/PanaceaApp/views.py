@@ -66,6 +66,11 @@ def employeeDetail(request, pk):
         employee.save()
         messages.success(request, 'employee updated!!!')
         return redirect('home')
+    
+    if request.method == 'POST':
+        employee.delete()
+        messages.warning(request, 'Employee deleted')
+        return redirect('home')
 
     context = {'employee': employee, 'form': form, 'departments': departments}
     return render(request, 'PanaceaApp/employeeDetail.html', context)
@@ -103,7 +108,6 @@ def addSalary(request):
         messages.success(request, 'salary record added!!!')
     context = {'employees': employees, 'salarys': salarys}
     return render(request, 'PanaceaApp/addSalary.html', context)
-
 
 def calender(request):
     context = {}
