@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from . models import Employee, Sallary, Department
-from .forms import AddEmployeeForm
+from .forms import AddEmployeeForm, updateEmployeeForm
 
 
 # Create your views here.
@@ -40,32 +41,33 @@ def addEmployee(request):
     context = {'form': form, 'departments': departments}
     return render(request, 'PanaceaApp/addEmployee.html', context)
 
-
+@login_required(login_url='/login')
 def employeeDetail(request, pk):
     employee = Employee.objects.get(id=pk)
-    form = AddEmployeeForm(instance=employee)
-    employees = Employee.objects.all()
+    form = updateEmployeeForm(instance=employee)
+    departments = Department.objects.all()
+    
 
-    if request.method == 'POST' and request.FILES:
+    if request.method == 'POST':
         department_name = request.POST.get('department')
         department, create = Department.objects.get_or_create(name=department_name)
 
-        employee.department = department,
-        employee.fullname = request.POST.get('fullname'),
-        employee.email = request.POST.get('email'),
-        employee.telephone = request.POST.get('telephone'),
-        employee.idnumber = request.POST.get('idnumber'),
-        employee.position = request.POST.get('position'),
-        employee.gender = request.POST.get('gender'),
-        employee.dateofbirth = request.POST.get('dateofbirth'),
-        employee.idphoto = request.FILES['idphoto'],
-        employee.nhifphoto = request.FILES['nhifphoto'],
-        employee.nssfphoto = request.FILES['nssfphoto'],
+        employee.department = department
+        employee.fullname = request.POST.get('fullname')
+        employee.email = request.POST.get('email')
+        employee.telephone = request.POST.get('telephone')
+        employee.idnumber = request.POST.get('idnumber')
+        employee.position = request.POST.get('position')
+        employee.gender = request.POST.get('gender')
+        employee.dateofbirth = request.POST.get('dateofbirth')
+        # employee.idphoto = request.FILES['idphoto']
+        # employee.nhifphoto = request.FILES['nhifphoto']
+        # employee.nssfphoto = request.FILES['nssfphoto']
         employee.save()
-        return redirect('home')
         messages.success(request, 'employee updated!!!')
+        return redirect('home')
 
-    context = {'employee': employee, 'employees': employees, 'form': form}
+    context = {'employee': employee, 'form': form, 'departments': departments}
     return render(request, 'PanaceaApp/employeeDetail.html', context)
 
 

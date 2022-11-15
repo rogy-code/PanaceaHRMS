@@ -20,8 +20,8 @@
         </div>
 
         <div class="section-body">
-            <h2 class="section-title">Add Employee</h2>
-            <p class="section-lead">You can add employee from here</p>
+            <h2 class="section-title">Add Employee salary</h2>
+            <p class="section-lead">You can add employee salary from here</p>
 
             <div id="output-status"></div>
             <div class="row">
@@ -33,19 +33,27 @@
                         <div class="card" id="settings-card">
                             <div class="card-header">
                                 <h4>Add Salary</h4>
+                                <div class="float-right">
+                                    <a href="{{request.META.HTTP_REFERER}}" class="btn btn-primary"
+                                        type="button">Back</a>
+                                </div>
                             </div>
                             <div class="card-body">
-                                <p class="text-muted">General settings such as, site title, site description, address
+                                <p class="text-muted">General settings add payrol
                                     and so on.</p>
                                 <div class="form-group row align-items-center">
                                     <label for="site-title" class="form-control-label col-sm-3 text-md-right">Full
                                         Name</label>
                                     <div class="col-sm-6 col-md-9">
-                                        <select type="text" name="employee" class="form-control" id="site-title">
-                                            {% for employee in employees %}
-                                            <option value="{{employee.fullname}}">{{employee.fullname}}</option>
-                                            {% endfor %}
-                                        </select>
+                                        <input type="text" name="employee" placeholder="select employee"
+                                            class="form-control" list="tg-select-addSalary" id="site-title">
+                                        <datalist id="tg-select-addSalary">
+                                            <select>
+                                                {% for employee in employees %}
+                                                <option value="{{employee.fullname}}">{{employee.fullname}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </datalist>
                                     </div>
                                 </div>
 

@@ -60,7 +60,7 @@
                                         <input type="text" name="gender" placeholder="select gender"
                                             class="form-control" list="tg-select" id="site-title">
                                         <datalist id="tg-select">
-                                            <select >
+                                            <select>
                                                 <option value="male">Male</option>
                                                 <option value="female">Female</option>
                                                 <option value="others">Others</option>
@@ -74,9 +74,9 @@
                                         class="form-control-label col-sm-3 text-md-right">Department</label>
                                     <div class="col-sm-6 col-md-9">
                                         <input type="text" name="department" placeholder="select department"
-                                            list="tg-select" class="form-control" id="site-title">
-                                        <datalist id="tg-select">
-                                            <select type="text" name="department" class="form-control" id="site-title">
+                                            list="tg-select-1" class="form-control" id="site-title">
+                                        <datalist id="tg-select-1">
+                                            <select>
                                                 {% for department in departments %}
                                                 <option value="{{department.name}}">{{department.name}}</option>
                                                 {% endfor %}
