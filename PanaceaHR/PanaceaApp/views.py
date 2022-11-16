@@ -146,17 +146,17 @@ def createDepartment(request):
     return render(request, 'PanaceaApp/createDepartment.html', context)
 
 # edit department views
-def editDepartment(request):
-    departments = Department.objects.all()
+def editDepartment(request, pk):
+    department = Department.objects.get(id=pk)
 
     if request.method == 'POST':
-        Department.objects.create(
-            name = request.POST.get('name'),
-            history = request.POST.get('history')
-        )
-        messages.success(request, 'department added!!!')
+        department.name=request.POST.get('name')
+        department.history=request.POST.get('history')        
+        department.save()    
+        messages.success(request, 'salary updated!!!')
         return redirect('department')
-    context = {'departments': departments}
+    
+    context = {'department': department}
     return render(request, 'PanaceaApp/editDepartment.html', context)
 
 def calender(request):

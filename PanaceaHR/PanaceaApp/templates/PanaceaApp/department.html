@@ -34,7 +34,7 @@
                             {{department.history}}
                         </div>
                         <div class="card-footer text-right">
-                            <button class="btn btn-primary">Edit</button>
+                            <a class="btn btn-primary" href="{% url 'editDepartment' department.id %}">Edit</a>
                             <button class="btn btn-danger">Delete</button>
                         </div>
                     </div>
