@@ -4,6 +4,13 @@ from django.contrib import messages
 from . models import Employee, Sallary, Department
 from .forms import EmployeeForm, salaryForm
 
+# print html to pdf
+from django.http import HttpResponse
+from io import BytesIO
+from django.views import View
+from django.template.loader import get_template
+from xhtml2pdf import pisa
+
 
 # dashboard views
 def home(request):
@@ -45,18 +52,19 @@ def addEmployee(request):
     return render(request, 'PanaceaApp/addEmployee.html', context)
 
 # select employee by id and edit/update
+
+
 @login_required(login_url='/login')
 def employeeDetail(request, pk):
     employee = Employee.objects.get(id=pk)
     form = EmployeeForm(instance=employee)
     departments = Department.objects.all()
-    
 
     if request.method == 'POST':
         form = EmployeeForm(request.POST, request.FILES, instance=employee)
         if form.is_valid():
             form.save()
-            
+
             messages.success(request, 'employee updated!!!')
             return redirect('home')
 
@@ -64,12 +72,16 @@ def employeeDetail(request, pk):
     return render(request, 'PanaceaApp/employeeDetail.html', context)
 
 # salary
+
+
 def salary(request):
     salarys = Sallary.objects.all()
     context = {'salarys': salarys}
     return render(request, 'PanaceaApp/salary.html', context)
 
 # salary select by is
+
+
 def salaryDetail(request, pk):
     salary = Sallary.objects.get(id=pk)
     employees = Employee.objects.all()
@@ -77,13 +89,16 @@ def salaryDetail(request, pk):
     return render(request, 'PanaceaApp/salaryDetail.html', context)
 
 # add salary record
+
+
 def addSalary(request):
     salarys = Sallary.objects.all()
     employees = Employee.objects.all()
 
     if request.method == 'POST':
         employee_name = request.POST.get('employee')
-        employee, create = Employee.objects.get_or_create(fullname=employee_name)
+        employee, create = Employee.objects.get_or_create(
+            fullname=employee_name)
 
         Sallary.objects.create(
             employee=employee,
@@ -98,16 +113,18 @@ def addSalary(request):
     return render(request, 'PanaceaApp/addSalary.html', context)
 
 # edit dalary record
+
+
 def editSalary(request, pk):
     salary = Sallary.objects.get(id=pk)
     form = salaryForm(instance=salary)
-        
+
     if request.method == 'POST':
-        salary.salary=request.POST.get('salary')
-        salary.allowance=request.POST.get('allowance')
-        salary.nssf=request.POST.get('nssf')
-        salary.nhif=request.POST.get('nhif')
-        salary.save()    
+        salary.salary = request.POST.get('salary')
+        salary.allowance = request.POST.get('allowance')
+        salary.nssf = request.POST.get('nssf')
+        salary.nhif = request.POST.get('nhif')
+        salary.save()
         messages.success(request, 'salary updated!!!')
         return redirect('salary')
 
@@ -115,6 +132,8 @@ def editSalary(request, pk):
     return render(request, 'PanaceaApp/editSalary.html', context)
 
 # delete salary records
+
+
 @login_required(login_url='/login')
 def deleteSalary(request, pk):
     salary = Sallary.objects.get(id=pk)
@@ -126,19 +145,23 @@ def deleteSalary(request, pk):
     return render(request, 'PanaceaApp/delete.html', {'obj': salary})
 
 # department views
+
+
 def department(request):
     departments = Department.objects.all()
     context = {'departments': departments}
     return render(request, 'PanaceaApp/department.html', context)
 
 # create department views
+
+
 def createDepartment(request):
     departments = Department.objects.all()
 
     if request.method == 'POST':
         Department.objects.create(
-            name = request.POST.get('name'),
-            history = request.POST.get('history')
+            name=request.POST.get('name'),
+            history=request.POST.get('history')
         )
         messages.success(request, 'department added!!!')
         return redirect('department')
@@ -146,20 +169,24 @@ def createDepartment(request):
     return render(request, 'PanaceaApp/createDepartment.html', context)
 
 # edit department views
+
+
 def editDepartment(request, pk):
     department = Department.objects.get(id=pk)
 
     if request.method == 'POST':
-        department.name=request.POST.get('name')
-        department.history=request.POST.get('history')        
-        department.save()    
+        department.name = request.POST.get('name')
+        department.history = request.POST.get('history')
+        department.save()
         messages.success(request, 'salary updated!!!')
         return redirect('department')
-    
+
     context = {'department': department}
     return render(request, 'PanaceaApp/editDepartment.html', context)
 
 # delete department records
+
+
 @login_required(login_url='/login')
 def deleteDepartment(request, pk):
     department = Department.objects.get(id=pk)
