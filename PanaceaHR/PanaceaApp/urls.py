@@ -18,6 +18,7 @@ urlpatterns = [
     path('department/', views.department, name='department'),
     path('createDepartment/', views.createDepartment, name='createDepartment'),
     path('editDepartment/<str:pk>/', views.editDepartment, name='editDepartment'),
+    path('deleteDepartment/<str:pk>/', views.deleteDepartment, name='deleteDepartment'),
 
     # calender urls
     path('calender/', views.calender, name='calender'),

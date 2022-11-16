@@ -165,9 +165,9 @@ def deleteDepartment(request, pk):
     department = Department.objects.get(id=pk)
 
     if request.method == 'POST':
-        salary.delete()
+        department.delete()
         messages.warning(request, 'department deleted')
-        return redirect('home')
+        return redirect('department')
 
     context = {'obj': department}
     return render(request, 'PanaceaApp/delete.html', context)

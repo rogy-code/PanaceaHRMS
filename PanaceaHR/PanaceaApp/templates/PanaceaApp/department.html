@@ -35,7 +35,7 @@
                         </div>
                         <div class="card-footer text-right">
                             <a class="btn btn-primary" href="{% url 'editDepartment' department.id %}">Edit</a>
-                            <button class="btn btn-danger">Delete</button>
+                            <a href="{% url 'deleteDepartment' department.id %}" class="btn btn-danger">Delete</a>
                         </div>
                     </div>
                 </div>
