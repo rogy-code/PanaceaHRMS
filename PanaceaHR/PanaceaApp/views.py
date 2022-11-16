@@ -2,10 +2,10 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from . models import Employee, Sallary, Department
-from .forms import EmployeeForm
+from .forms import EmployeeForm, salaryForm
 
 
-# Create your views here.
+# dashboard views
 def home(request):
     employees = Employee.objects.all()
     departments = Department.objects.all()
@@ -15,6 +15,7 @@ def home(request):
     return render(request, 'PanaceaApp/home.html', context)
 
 
+# add employee record
 def addEmployee(request):
     form = EmployeeForm()
     departments = Department.objects.all()
@@ -43,6 +44,7 @@ def addEmployee(request):
     context = {'form': form, 'departments': departments}
     return render(request, 'PanaceaApp/addEmployee.html', context)
 
+# select employee by id and edit/update
 @login_required(login_url='/login')
 def employeeDetail(request, pk):
     employee = Employee.objects.get(id=pk)
@@ -61,20 +63,20 @@ def employeeDetail(request, pk):
     context = {'employee': employee, 'form': form, 'departments': departments}
     return render(request, 'PanaceaApp/employeeDetail.html', context)
 
-
+# salary
 def salary(request):
     salarys = Sallary.objects.all()
     context = {'salarys': salarys}
     return render(request, 'PanaceaApp/salary.html', context)
 
-
+# salary select by is
 def salaryDetail(request, pk):
     salary = Sallary.objects.get(id=pk)
     employees = Employee.objects.all()
     context = {'salary': salary, 'employees': employees}
     return render(request, 'PanaceaApp/salaryDetail.html', context)
 
-
+# add salary record
 def addSalary(request):
     salarys = Sallary.objects.all()
     employees = Employee.objects.all()
@@ -96,10 +98,39 @@ def addSalary(request):
     context = {'employees': employees, 'salarys': salarys}
     return render(request, 'PanaceaApp/addSalary.html', context)
 
+# edit dalary record
 def editSalary(request, pk):
     salary = Sallary.objects.get(id=pk)
-    context = {'salary': salary}
+    form = salaryForm(instance=salary)
+        
+    if request.method == 'POST':
+        salary.salary=request.POST.get('salary')
+        salary.allowance=request.POST.get('allowance')
+        salary.nssf=request.POST.get('nssf')
+        salary.nhif=request.POST.get('nhif')
+        salary.save()    
+        messages.success(request, 'salary updated!!!')
+        return redirect('salary')
+
+    context = {'salary': salary, 'form': form}
     return render(request, 'PanaceaApp/editSalary.html', context)
+
+# delete salary records
+@login_required(login_url='/login')
+def deleteSalary(request, pk):
+    salary = Sallary.objects.get(id=pk)
+
+    if request.method == 'POST':
+        salary.delete()
+        messages.warning(request, 'Room deleted')
+        return redirect('home')
+    return render(request, 'PanaceaApp/delete.html', {'obj': salary})
+#
+# department views
+def department(request):
+    departments = Department.objects.all()
+    context = {'departments': departments}
+    return render(request, 'PanaceaApp/department.html', context)
 
 def calender(request):
     context = {}

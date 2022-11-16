@@ -29,12 +29,6 @@
                 <div class="d-sm-none d-lg-inline-block">Hi, {{user}}</div>
             </a>
             <div class="dropdown-menu dropdown-menu-right">
-                <div class="dropdown-title">Logged in 5 min ago</div>
-                <a href="features-profile.html" class="dropdown-item has-icon"><i class="far fa-user"></i> Profile</a>
-                <a href="features-activities.html" class="dropdown-item has-icon"><i class="fas fa-bolt"></i>
-                    Activities</a>
-                <a href="features-settings.html" class="dropdown-item has-icon"><i class="fas fa-cog"></i> Settings</a>
-                <div class="dropdown-divider"></div>
                 <a href="{% url 'logout' %}" class="dropdown-item has-icon text-danger"><i class="fas fa-sign-out-alt"></i> Logout</a>
             </div>
         </li>
@@ -59,15 +53,15 @@
                     <span>Add Employee</span></a>
 
             </li>
+
+            <li class="menu-header">Departments</li>
+            <li class="dropdown">
+                <a href="{% url 'department' %}" class="nav-link "><i class="fas fa-th-large"></i> <span>Departments</span></a>                
+            </li>
     
             <li class="menu-header">Payroll</li>
             <li class="dropdown">
-                <a href="{% url 'salary' %}" class="nav-link "><i class="fas fa-th-large"></i> <span>Payroll</span></a>
-                <!-- <a href="#" class="nav-link "><i class="fas fa-th-large"></i> <span>NHIF</span></a>
-                <a href="#" class="nav-link "><i class="fas fa-th-large"></i> <span>NSSF</span></a>
-                <a href="#" class="nav-link "><i class="fas fa-th-large"></i> <span>Allowances</span></a> -->
-                <!-- <a href="#" class="nav-link "><i class="fas fa-th-large"></i> <span>Others</span></a> -->
-                
+                <a href="{% url 'salary' %}" class="nav-link "><i class="fas fa-th-large"></i> <span>Payroll</span></a>                
             </li>
            
             <li class="menu-header">Additional</li>

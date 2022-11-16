@@ -44,21 +44,20 @@
                 </div>
                 <div class="col-8 col-md-8 col-lg-9">
                     <div class="card">
-                        <form method="post" enctype="multipart/form-data">
+                        <form method="post">
                             {% csrf_token %}
 
                             <div class="card-header">
                                 <h4>Edit Profile</h4>
-                                <div>
-                                    <a href="" class="btn btn-danger" type="submit">Delete Record</a>
-                                </div>
                             </div>
                             <div class="card-body">
                                 <div class="row">
                                     <div class="form-group col-md-6 col-12">
                                         <label>Name</label>
-                                        <input type="text" name="employee" class="form-control"
-                                            value="{{salary.employee.fullname}}" disabled>
+                                        <div class="form-control">
+                                            {{salary.employee.fullname}}
+                                        </div>
+                                        
                                     </div>
 
                                     <div class="form-group col-md-6 col-12">
@@ -84,14 +83,15 @@
                                 <div class="row">
                                     <div class="form-group col-md-6 col-12">
                                         <label>NSSF</label>
-                                        <input type="number" name="nhif" class="form-control"
+                                        <input type="number" name="nssf" class="form-control"
                                             value="{{salary.nssf}}">
 
                                     </div>
                                     <div class="form-group col-md-6 col-12">
                                         <label>Net Salary</label>
-                                        <input type="number" name="nhif" class="form-control"
-                                            value="{{salary.netSalary}}" disabled>
+                                        <div class="form-control">
+                                            {{salary.netSalary}}
+                                        </div>
                                     </div>
                                 </div>
                                
