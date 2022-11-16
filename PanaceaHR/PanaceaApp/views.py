@@ -159,6 +159,20 @@ def editDepartment(request, pk):
     context = {'department': department}
     return render(request, 'PanaceaApp/editDepartment.html', context)
 
+# delete department records
+@login_required(login_url='/login')
+def deleteDepartment(request, pk):
+    department = Department.objects.get(id=pk)
+
+    if request.method == 'POST':
+        salary.delete()
+        messages.warning(request, 'department deleted')
+        return redirect('home')
+
+    context = {'obj': department}
+    return render(request, 'PanaceaApp/delete.html', context)
+
+
 def calender(request):
     context = {}
     return render(request, 'PanaceaApp/calender.html', context)
