@@ -9,7 +9,7 @@
     <section class="section">
         <div class="section-header">
             <div class="section-header-back">
-                <a href="features-settings.html" class="btn btn-icon"><i class="fas fa-arrow-left"></i></a>
+                <a href="{{request.META.HTTP_REFERER}}" class="btn btn-icon"><i class="fas fa-arrow-left"></i></a>
             </div>
             <h1>General Settings</h1>
             <div class="section-header-breadcrumb">
@@ -33,10 +33,6 @@
                         <div class="card" id="settings-card">
                             <div class="card-header">
                                 <h4>Add Salary</h4>
-                                <div class="float-right">
-                                    <a href="{{request.META.HTTP_REFERER}}" class="btn btn-primary"
-                                        type="button">Back</a>
-                                </div>
                             </div>
                             <div class="card-body">
                                 <p class="text-muted">General settings add payrol
