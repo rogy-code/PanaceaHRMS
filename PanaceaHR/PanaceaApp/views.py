@@ -83,8 +83,7 @@ def addSalary(request):
 
     if request.method == 'POST':
         employee_name = request.POST.get('employee')
-        employee, create = Employee.objects.get_or_create(
-            fullname=employee_name)
+        employee, create = Employee.objects.get_or_create(fullname=employee_name)
 
         Sallary.objects.create(
             employee=employee,
@@ -125,12 +124,40 @@ def deleteSalary(request, pk):
         messages.warning(request, 'Room deleted')
         return redirect('home')
     return render(request, 'PanaceaApp/delete.html', {'obj': salary})
-#
+
 # department views
 def department(request):
     departments = Department.objects.all()
     context = {'departments': departments}
     return render(request, 'PanaceaApp/department.html', context)
+
+# create department views
+def createDepartment(request):
+    departments = Department.objects.all()
+
+    if request.method == 'POST':
+        Department.objects.create(
+            name = request.POST.get('name'),
+            history = request.POST.get('history')
+        )
+        messages.success(request, 'department added!!!')
+        return redirect('department')
+    context = {'departments': departments}
+    return render(request, 'PanaceaApp/createDepartment.html', context)
+
+# edit department views
+def editDepartment(request):
+    departments = Department.objects.all()
+
+    if request.method == 'POST':
+        Department.objects.create(
+            name = request.POST.get('name'),
+            history = request.POST.get('history')
+        )
+        messages.success(request, 'department added!!!')
+        return redirect('department')
+    context = {'departments': departments}
+    return render(request, 'PanaceaApp/editDepartment.html', context)
 
 def calender(request):
     context = {}

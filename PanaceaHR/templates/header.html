@@ -8,17 +8,16 @@
     <form class="form-inline mr-auto">
         <ul class="navbar-nav mr-3">
             <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="fas fa-bars"></i></a></li>
-            <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i
-                        class="fas fa-search"></i></a></li>
+            <!-- <li><a href="#" class="nav-link nav-link-lg d-sm-none"></a></li> -->
         </ul>
         <div class="pr-2">
             <h3>Panacea HR System</h3>
         </div>
-        <div class="search-element">
+        <!-- <div class="search-element">
             <input class="form-control" type="search" placeholder="Search" aria-label="Search" data-width="250">
             <button class="btn" type="submit"><i class="fas fa-search"></i></button>
 
-        </div>
+        </div> -->
     </form>
 
     <ul class="navbar-nav navbar-right">
@@ -29,7 +28,8 @@
                 <div class="d-sm-none d-lg-inline-block">Hi, {{user}}</div>
             </a>
             <div class="dropdown-menu dropdown-menu-right">
-                <a href="{% url 'logout' %}" class="dropdown-item has-icon text-danger"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                <a href="{% url 'logout' %}" class="dropdown-item has-icon text-danger"><i
+                        class="fas fa-sign-out-alt"></i> Logout</a>
             </div>
         </li>
     </ul>
@@ -56,27 +56,29 @@
 
             <li class="menu-header">Departments</li>
             <li class="dropdown">
-                <a href="{% url 'department' %}" class="nav-link "><i class="fas fa-th-large"></i> <span>Departments</span></a>                
+                <a href="{% url 'department' %}" class="nav-link "><i class="fas fa-th-large"></i>
+                    <span>Departments</span></a>
             </li>
-    
+
             <li class="menu-header">Payroll</li>
             <li class="dropdown">
-                <a href="{% url 'salary' %}" class="nav-link "><i class="fas fa-th-large"></i> <span>Payroll</span></a>                
+                <a href="{% url 'salary' %}" class="nav-link "><i class="fas fa-th-large"></i> <span>Payroll</span></a>
             </li>
-           
+
             <li class="menu-header">Additional</li>
             <li class="dropdown">
-                <a href="{% url 'calender' %}" class="nav-link"><i class="far fa-user"></i> <span>Calender</span></a>
-               
+                <a href="{% url 'calender' %}" class="nav-link"><i class="far fa-calendar"></i>
+                    <span>Calender</span></a>
+
             </li>
             <!-- <li><a href="auth-login.html">Login</a></li> -->
-            
+
             <li class="menu-header">Additional</li>
             <li class="dropdown">
                 <a href="{% url 'logout' %}" class="nav-link"><i class="far fa-user"></i> <span>Logout</span></a>
-               
+
             </li>
-           
+
         </ul>
     </aside>
 </div>

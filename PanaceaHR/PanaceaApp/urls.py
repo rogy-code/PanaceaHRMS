@@ -16,6 +16,7 @@ urlpatterns = [
 
     # department urls
     path('department/', views.department, name='department'),
+    path('createDepartment/', views.createDepartment, name='createDepartment'),
 
     # calender urls
     path('calender/', views.calender, name='calender'),
