@@ -49,7 +49,7 @@
                                         <td class="font-weight-600">Ksh. {{salary.nhif}}</td>
                                         <td class="font-weight-600">Ksh. {{salary.nssf}}</td>
                                         <td class="font-weight-600">Ksh. {{salary.netSalary}}</td>
-                                        <td><a href="{{request.META.HTTP_REFERER}}" class="btn btn-danger">Delete</a></td>
+                                        <td><a href="{% url 'editSalary' salary.id %}" class="btn btn-primary">settings</a></td>
                                     </tr>
                                     {% endfor %}
                                 </tbody>

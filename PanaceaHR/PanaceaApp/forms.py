@@ -1,15 +1,8 @@
 from django.forms import ModelForm
 from .models import Employee
-from django.forms import ModelForm, TextInput
-
+from django import forms
  
-class AddEmployeeForm(ModelForm):
-    class Meta:
-        model = Employee
-        fields = '__all__'
-        exclude = ['created','updated']
-
-class updateEmployeeForm(ModelForm):
+class EmployeeForm(ModelForm):
     class Meta:
         model = Employee
         fields = '__all__'

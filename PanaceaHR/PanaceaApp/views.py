@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from . models import Employee, Sallary, Department
-from .forms import AddEmployeeForm, updateEmployeeForm
+from .forms import EmployeeForm
 
 
 # Create your views here.
@@ -16,7 +16,7 @@ def home(request):
 
 
 def addEmployee(request):
-    form = AddEmployeeForm()
+    form = EmployeeForm()
     departments = Department.objects.all()
 
     if request.method == 'POST' and request.FILES:
@@ -38,39 +38,25 @@ def addEmployee(request):
             nssfphoto=request.FILES['nssfphoto'],
         )
         messages.success(request, 'user added!!!')
+        return redirect('home')
+
     context = {'form': form, 'departments': departments}
     return render(request, 'PanaceaApp/addEmployee.html', context)
 
 @login_required(login_url='/login')
 def employeeDetail(request, pk):
     employee = Employee.objects.get(id=pk)
-    form = updateEmployeeForm(instance=employee)
+    form = EmployeeForm(instance=employee)
     departments = Department.objects.all()
     
 
     if request.method == 'POST':
-        department_name = request.POST.get('department')
-        department, create = Department.objects.get_or_create(name=department_name)
-
-        employee.department = department
-        employee.fullname = request.POST.get('fullname')
-        employee.email = request.POST.get('email')
-        employee.telephone = request.POST.get('telephone')
-        employee.idnumber = request.POST.get('idnumber')
-        employee.position = request.POST.get('position')
-        employee.gender = request.POST.get('gender')
-        employee.dateofbirth = request.POST.get('dateofbirth')
-        # employee.idphoto = request.FILES['idphoto']
-        # employee.nhifphoto = request.FILES['nhifphoto']
-        # employee.nssfphoto = request.FILES['nssfphoto']
-        employee.save()
-        messages.success(request, 'employee updated!!!')
-        return redirect('home')
-    
-    if request.method == 'POST':
-        employee.delete()
-        messages.warning(request, 'Employee deleted')
-        return redirect('home')
+        form = EmployeeForm(request.POST, request.FILES, instance=employee)
+        if form.is_valid():
+            form.save()
+            
+            messages.success(request, 'employee updated!!!')
+            return redirect('home')
 
     context = {'employee': employee, 'form': form, 'departments': departments}
     return render(request, 'PanaceaApp/employeeDetail.html', context)
@@ -106,8 +92,14 @@ def addSalary(request):
             nhif=request.POST.get('nhif'),
         )
         messages.success(request, 'salary record added!!!')
+        return redirect('salary')
     context = {'employees': employees, 'salarys': salarys}
     return render(request, 'PanaceaApp/addSalary.html', context)
+
+def editSalary(request, pk):
+    salary = Sallary.objects.get(id=pk)
+    context = {'salary': salary}
+    return render(request, 'PanaceaApp/editSalary.html', context)
 
 def calender(request):
     context = {}
