@@ -13,6 +13,7 @@ urlpatterns = [
     path('addSalary/', views.addSalary, name='addSalary'),
     path('editSalary/<str:pk>/', views.editSalary, name='editSalary'),
     path('deleteSalary/<str:pk>/', views.deleteSalary, name='deleteSalary'),
+    path('salary/<str:pk>/payslip/', views.payslip, name='payslip'),
 
     # department urls
     path('department/', views.department, name='department'),

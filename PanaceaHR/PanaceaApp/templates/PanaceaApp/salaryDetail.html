@@ -118,6 +118,11 @@
                 </div>
                 <hr>
                 <div class="text-md-right">
+                    <a href="{% url 'payslip' salary.id %}" class="btn btn-success btn-icon icon-left print">
+                        <i class="fas fa-print"></i> Print</a>
+                </div>
+                <div class="text-md-right">
+                    
                     <button type="submit" value="click" onclick="generatePDF()"
                         class="btn btn-warning btn-icon icon-left print">
                         <i class="fas fa-print"></i> Print</button>

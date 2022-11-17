@@ -68,6 +68,13 @@ def salary(request):
     context = {'salarys': salarys}
     return render(request, 'PanaceaApp/salary.html', context)
 
+# payslip
+def payslip(request, pk):
+    salary = Sallary.objects.get(id=pk)
+    employees = Employee.objects.all()
+    context = {'salary': salary, 'employees': employees}
+    return render(request, 'PanaceaApp/payslip.html', context)
+
 # salary select by is
 def salaryDetail(request, pk):
     salary = Sallary.objects.get(id=pk)
@@ -124,6 +131,7 @@ def deleteSalary(request, pk):
         messages.warning(request, 'Room deleted')
         return redirect('home')
     return render(request, 'PanaceaApp/delete.html', {'obj': salary})
+
 
 # department views
 def department(request):
