@@ -26,8 +26,8 @@
                                 class="rounded-circle profile-widget-picture">
                             <div class="profile-widget-items">
                                 <div class="profile-widget-item">
-                                    <div class="profile-widget-item-value">{{employee.email}}</div>
-                                    <div class="profile-widget-item-value">{{employee.telephone}}</div>
+                                    <div class="profile-widget-item-value"></div>
+                                    <div class="profile-widget-item-value"></div>
                                 </div>
                             </div>
                         </div>
@@ -81,6 +81,7 @@
                                 <div class="row">
                                     <div class="form-group col-md-6 col-12">
                                         <label>Date of Birth</label>
+                                        
                                         <div class="form-control">
                                             {{form.dateofbirth}}
                                         </div>
@@ -111,28 +112,36 @@
                                 </div>
 
                                 <div class="row">
-                                    <div class="form-group col-md-6 col-12">
+                                    <div class="form-group col-md-6 col-12 mt-sm-5">
                                         <label>IdPhoto</label>
-                                        <div class="form-control">
+                                        <div class="p-3">
+                                            <img src="{{employee.idphoto.url}}" class="img-fluid" alt="">
+                                        </div>
+                                        <div class="form-control p-3">
                                             {{form.idphoto}}
                                         </div>
                                     </div>
-                                    <div class="form-group col-md-6 col-12">
+                                    <div class="form-group col-md-6 col-12 mt-sm-5">
                                         <label>NssfPhoto</label>
-                                        <div class="form-control">
+                                        <div class="p-3">
+                                            <img src="{{employee.nssfphoto.url}}" class="img-fluid" alt="">
+                                        </div>
+                                        <div class="form-control  p-3">
                                             {{form.nssfphoto}}
                                         </div>
 
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="form-group col-md-6 col-12">
+                                    <div class="form-group col-md-6 col-12 mt-sm-5">
                                         <label>NhifPhoto</label>
-                                        <div class="form-control">
+                                        <div class="p-3">
+                                            <img src="{{employee.nhifphoto.url}}" class="img-fluid" alt="">
+                                        </div>
+                                        <div class="form-control p-3">
                                             {{form.nhifphoto}}
                                         </div>
                                     </div>
                                 </div>
+                               
 
 
                             </div>

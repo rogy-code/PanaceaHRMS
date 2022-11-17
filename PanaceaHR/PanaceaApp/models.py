@@ -41,6 +41,11 @@ class Sallary(models.Model):
     nhif = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     nssf = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     netSalary = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
+    updated = models.DateTimeField(auto_now=True, null=True)
+    created = models.DateTimeField(auto_now_add=True, null=True)
+
+    class Meta:
+        ordering = ['-updated', '-created']
 
     def __str__(self):
         return self.employee.fullname[0:50]

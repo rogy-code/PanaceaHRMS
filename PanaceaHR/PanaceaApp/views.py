@@ -176,3 +176,6 @@ def deleteDepartment(request, pk):
 def calender(request):
     context = {}
     return render(request, 'PanaceaApp/calender.html', context)
+
+
+
