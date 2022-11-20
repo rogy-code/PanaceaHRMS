@@ -96,8 +96,7 @@ def addSalary(request):
             employee=employee,
             salary=request.POST.get('salary'),
             allowance=request.POST.get('allowance'),
-            nssf=request.POST.get('nssf'),
-            nhif=request.POST.get('nhif'),
+            nssf=request.POST.get('nssf')
         )
         messages.success(request, 'salary record added!!!')
         return redirect('salary')
