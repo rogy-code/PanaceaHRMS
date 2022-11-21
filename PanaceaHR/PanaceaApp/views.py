@@ -96,7 +96,6 @@ def addSalary(request):
             employee=employee,
             salary=request.POST.get('salary'),
             allowance=request.POST.get('allowance'),
-            nssf=request.POST.get('nssf')
         )
         messages.success(request, 'salary record added!!!')
         return redirect('salary')
@@ -111,8 +110,6 @@ def editSalary(request, pk):
     if request.method == 'POST':
         salary.salary = request.POST.get('salary')
         salary.allowance = request.POST.get('allowance')
-        salary.nssf = request.POST.get('nssf')
-        salary.nhif = request.POST.get('nhif')
         salary.save()
         messages.success(request, 'salary updated!!!')
         return redirect('salary')
