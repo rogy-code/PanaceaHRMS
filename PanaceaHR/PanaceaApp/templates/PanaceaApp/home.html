@@ -25,20 +25,22 @@
                 </div>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12">
-                <div class="card card-statistic-2">
+                <a href="{% url 'department' %}">
+                    <div class="card card-statistic-2">
 
-                    <div class="card-icon shadow-primary bg-primary">
-                        <i class="fas fa-address-book"></i>
-                    </div>
-                    <div class="card-wrap">
-                        <div class="card-header">
-                            <h4>Departments</h4>
+                        <div class="card-icon shadow-primary bg-primary">
+                            <i class="fas fa-address-book"></i>
                         </div>
-                        <div class="card-body">
-                            {{departments.count}}
+                        <div class="card-wrap">
+                            <div class="card-header">
+                                <h4>Departments</h4>
+                            </div>
+                            <div class="card-body">
+                                {{departments.count}}
+                            </div>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12">
                 <div class="card card-statistic-2">
@@ -51,9 +53,9 @@
                             <h4>Total Expenditure</h4>
                         </div>
                         <div class="card-body">
-                    
+
                             {{ expence }}
-                           
+
                         </div>
                     </div>
                 </div>
