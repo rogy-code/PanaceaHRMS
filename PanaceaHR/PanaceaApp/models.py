@@ -38,9 +38,9 @@ class Sallary(models.Model):
     employee = models.ForeignKey(Employee, on_delete=models.SET_NULL, null=True)
     salary = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     allowance = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
-    # nhif = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
-    # nssf = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
-    # netSalary = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
+    nhif = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
+    nssf = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
+    netSalary = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     updated = models.DateTimeField(auto_now=True, null=True)
     created = models.DateTimeField(auto_now_add=True, null=True)
 
@@ -54,9 +54,9 @@ class Sallary(models.Model):
     def total_income(self):
         return (self.salary + self.allowance)
     
-    @property
-    def expenditure(self):
-        return (self.netSalary)
+    # @property
+    # def expenditure(self):
+    #     return (self.netSalary)
     
     @property
     def nhif(self):
@@ -133,8 +133,9 @@ class Sallary(models.Model):
             return(1600)
     
     @property
-    def netSalary(self):
-        return (self.salary + self.allowance)-(self.nhif + self.nssf)
-    @property
     def total_deductions(self):
         return (self.nhif + self.nssf)
+    
+    @property
+    def netSalary(self):
+        return (self.total_income)-(self.total_deductions)

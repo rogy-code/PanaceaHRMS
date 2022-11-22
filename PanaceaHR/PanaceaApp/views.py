@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from . models import Employee, Sallary, Department
 from .forms import EmployeeForm, salaryForm
+from django.db.models import Sum
 
 
 # dashboard views
@@ -10,8 +11,13 @@ def home(request):
     employees = Employee.objects.all()
     departments = Department.objects.all()
     salarys = Sallary.objects.all()
-    context = {'employees': employees,
-               'departments': departments, 'salarys': salarys}
+    expences = Sallary.objects.all.aggregate(Sum('netSalary'))
+    # expences = Sallary.objects.all()
+    # total = 0
+    # for expence in expences:
+    #     total += expence.netSalary()
+    
+    context = {'employees': employees, 'departments': departments, 'salarys': salarys, 'expences': expences}
     return render(request, 'PanaceaApp/home.html', context)
 
 
