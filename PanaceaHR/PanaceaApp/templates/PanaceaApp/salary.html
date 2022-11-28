@@ -31,6 +31,7 @@
                                         <th>Allowances</th>
                                         <th>NHIF</th>
                                         <th>NSSF</th>
+                                        <th>PAYE</th>
                                         <th>Net Salary</th>
                                         <th>Action</th>
                                         
@@ -45,9 +46,16 @@
                                         </td>
                                         <td class="font-weight-600">Ksh. {{salary.salary}}</td>
                                         <td class="font-weight-600">Ksh. {{salary.allowance}}</td>
-                                        <td class="font-weight-600">Ksh. {{salary.nhif}}</td>
-                                        <td class="font-weight-600">Ksh. {{salary.nssf}}</td>
-                                        <td class="font-weight-600">Ksh. {{salary.netSalary}}</td>
+                                        <td class="font-weight-600">Ksh. {{salary.nhif |floatformat:2}}</td>
+                                        <td class="font-weight-600">Ksh. {{salary.nssf |floatformat:2}}</td>
+                                        <td class="font-weight-600">  
+                                            {% if salary.paye <= 0 %}
+                                            Ksh. 0.00
+                                            {% else %}
+                                            Ksh. {{salary.paye |floatformat:2}}
+                                            {% endif %}
+                                        </td>
+                                        <td class="font-weight-600">Ksh. {{salary.netSalary |floatformat:2}}</td>
                                         <td>
                                             <a href="{% url 'editSalary' salary.id %}" class="btn btn-primary">edit</a>
                                             <a href="{% url 'deleteSalary' salary.id %}" class="btn btn-danger">delete</a>

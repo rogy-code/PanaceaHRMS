@@ -86,6 +86,7 @@
                                         <th>Email</th>
                                         <th>Gender</th>
                                         <th>Position</th>
+                                        <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -101,6 +102,9 @@
                                         <td class="font-weight-600">{{employee.email}}</td>
                                         <td class="font-weight-600">{{employee.gender}}</td>
                                         <td class="font-weight-600">{{employee.position}}</td>
+                                        <td>
+                                            <a href="{% url 'deleteEmployee' employee.id %}" class="btn btn-danger" type="button">Delete</a>
+                                        </td>
 
                                     </tr>
                                     {% endfor %}

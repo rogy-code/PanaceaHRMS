@@ -76,7 +76,7 @@
                                     <div class="form-group col-md-6 col-12">
                                         <label>NHIF</label>
                                         <div class="form-control">
-                                            {{salary.nhif}}
+                                            {{salary.nhif |floatformat:2}}
                                         </div>
                                     </div>
                                 </div>
@@ -85,14 +85,15 @@
                                     <div class="form-group col-md-6 col-12">
                                         <label>NSSF</label>
                                         <div class="form-control">
-                                            {{salary.nssf}}
+                                            {{salary.nssf |floatformat:2}}
                                         </div>
 
                                     </div>
                                     <div class="form-group col-md-6 col-12">
                                         <label>Net Salary</label>
                                         <div class="form-control">
-                                            {{salary.netSalary}}
+                                            {{salary.netSalary |floatformat:2}}
+                                           
                                         </div>
                                     </div>
                                 </div>

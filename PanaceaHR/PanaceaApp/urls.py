@@ -6,6 +6,7 @@ urlpatterns = [
     # employees urls
     path('addEmployee/', views.addEmployee, name='addEmployee'),
     path('employeedetail/<str:pk>/', views.employeeDetail, name='employeeDetail'),
+    path('deleteEmployee/<str:pk>/', views.deleteEmployee, name='deleteEmployee'),
 
     # salary urls
     path('salary/', views.salary, name='salary'),

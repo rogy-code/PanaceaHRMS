@@ -1,4 +1,5 @@
 from django.db import models
+import decimal
 
 # Create your models here.
 
@@ -35,7 +36,7 @@ class Employee(models.Model):
 
 
 class Sallary(models.Model):
-    employee = models.ForeignKey(Employee, on_delete=models.SET_NULL, null=True)
+    employee = models.ForeignKey(Employee, on_delete=models.CASCADE, null=True)
     salary = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     allowance = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     nhif = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
@@ -97,40 +98,21 @@ class Sallary(models.Model):
 
     @property
     def nssf(self):
-        if (self.salary + self.allowance) >= 0 and (self.salary + self.allowance) <= 5999:
-            return(100)
-        elif (self.salary + self.allowance) >= 6000 and (self.salary + self.allowance) <=7999:
-            return(200)
-        elif (self.salary + self.allowance) >= 8000 and (self.salary + self.allowance) <=11999:
-            return(300)
-        elif (self.salary + self.allowance) >= 12000 and (self.salary + self.allowance) <=14999:
-            return(400)
-        elif (self.salary + self.allowance) >= 15000 and (self.salary + self.allowance) <=19999:
-            return(500)
-        elif (self.salary + self.allowance) >= 20000 and (self.salary + self.allowance) <=24999:
-            return(650)
-        elif (self.salary + self.allowance) >= 25000 and (self.salary + self.allowance) <=29999:
-            return(750)
-        elif (self.salary + self.allowance) >= 30000 and (self.salary + self.allowance) <=34999:
-            return(800)
-        elif (self.salary + self.allowance) >= 35000 and (self.salary + self.allowance) <=39000:
-            return(850)
-        elif (self.salary + self.allowance) >= 40000 and (self.salary + self.allowance) <=44999:
-            return(900)
-        elif (self.salary + self.allowance) >= 45000 and (self.salary + self.allowance) <=49000:
-            return(1000)
-        elif (self.salary + self.allowance) >= 50000 and (self.salary + self.allowance) <=59999:
-            return(1100)
-        elif (self.salary + self.allowance) >= 60000 and (self.salary + self.allowance) <=69999:
-            return(1200)
-        elif (self.salary + self.allowance) >= 70000 and (self.salary + self.allowance) <=79999:
-            return(1300)
-        elif (self.salary + self.allowance) >= 80000 and (self.salary + self.allowance) <=89999:
-            return(1400)
-        elif (self.salary + self.allowance) >= 90000 and (self.salary + self.allowance) <=99999:
-            return(1500)
+        if (self.salary + self.allowance) >= 0 and (self.salary + self.allowance) <= 6000:
+            return ((self.salary + self.allowance) * (decimal.Decimal(0.06)))
+        elif (self.salary + self.allowance) >= 6001 and (self.salary + self.allowance) <=18000:
+            return (((self.salary + self.allowance)-6000) * (decimal.Decimal(0.06 )) + 360)    
         else:
-            return(1600)
+            return (1080)
+    
+    @property
+    def paye(self):
+        if(self.total_income - self.nssf) >= 0 and (self.total_income - self.nssf) <= 24000:
+            return (((self.total_income - self.nssf)* (decimal.Decimal(0.1)))-2400)
+        elif (self.total_income - self.nssf) >= 24001 and (self.total_income - self.nssf) <= 32332:
+            return ((((self.total_income - self.nssf)-24000) * (decimal.Decimal(0.25 ))))
+        else:
+            return(((self.total_income - self.nssf)-32332) * (decimal.Decimal(0.3))+ (decimal.Decimal(2083.25)))
     
     @property
     def total_deductions(self):

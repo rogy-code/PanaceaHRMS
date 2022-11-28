@@ -176,6 +176,18 @@ def deleteDepartment(request, pk):
     context = {'obj': department}
     return render(request, 'PanaceaApp/delete.html', context)
 
+@login_required(login_url='/login')
+def deleteEmployee(request, pk):
+    employee = Employee.objects.get(id=pk)
+
+    if request.method == 'POST':
+        employee.delete()
+        messages.warning(request, 'employeee deleted')
+        return redirect('home')
+
+    context = {'obj': employee}
+    return render(request, 'PanaceaApp/delete.html', context)
+
 
 def calender(request):
     context = {}
