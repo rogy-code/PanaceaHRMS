@@ -121,3 +121,10 @@ class Sallary(models.Model):
     @property
     def netSalary(self):
         return (self.total_income)-(self.total_deductions)
+    
+    @property
+    def netPaye(self):
+        if self.paye <= 0:
+            return(self.netSalary)
+        else:
+            return(self.netSalary- self.paye)
