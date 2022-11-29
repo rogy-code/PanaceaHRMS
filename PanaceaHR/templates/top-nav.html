@@ -1,0 +1,46 @@
+{% load static %}
+<!-- ################# Header Starts Here#######################--->
+<header>
+    <div class="header-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 col-md-12 left-item">
+                    <ul>
+                        <li><i class="fas fa-envelope-square"></i> sales@panancea.com</li>
+                        <li><i class="fas fa-phone-square"></i> +123 987 887 765</li>
+                    </ul>
+                </div>
+                <div class="col-lg-5 d-none d-lg-block right-item">
+                    <ul>
+                        <li><a><i class="fab fa-github"></i></a></li>
+                        <li><a><i class="fab fa-google-plus-g"></i></a></li>
+                        <li> <a><i class="fab fa-pinterest-p"></i></a></li>
+                        <li><a><i class="fab fa-twitter"></i></a></li>
+                        <li> <a><i class="fab fa-facebook-f"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div id="nav-head" class="header-nav">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-12 nav-img">
+                    <h2 class="pt-3 text-light">Panacea</h2>
+                    <a data-toggle="collapse" data-target="#menu" href="#menu"><i
+                            class="fas d-block d-md-none small-menu fa-bars"></i></a>
+                </div>
+                <div id="menu" class="col-md-9 d-none d-md-block nav-item">
+                    <ul>
+                        <li><a href="{% url 'index' %}">Home</a></li>
+                        <li><a href="{% url 'about' %}">About Us</a></li>
+                        <li><a href="{% url 'contact' %}">Contact Us</a></li>
+                        <li><a href="{% url 'login' %}">HR Login</a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</header>

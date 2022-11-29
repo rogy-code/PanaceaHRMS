@@ -13,6 +13,17 @@ from .forms import UserForm
 
 # Create your views here.
 
+def index(request):
+    context = {}
+    return render(request, 'accounts/index.html', context)
+
+def contact(request):
+    context = {}
+    return render(request, 'accounts/contact.html', context)
+
+def about(request):
+    context = {}
+    return render(request, 'accounts/about.html', context)
 
 def loginView(request):
     page = 'login'
@@ -42,4 +53,4 @@ def loginView(request):
 def logoutUser(request):
     logout(request)
     messages.success(request, 'User logged out')
-    return redirect('login')
+    return redirect('index')

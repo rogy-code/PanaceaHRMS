@@ -1,0 +1,221 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load static %}
+   
+    <!-- ################# Slider Starts Here#######################--->
+    <div class="slider">
+        <div class="container">
+            <div class="slider-titl row">
+                <div class="col-md-6 slidgb">
+                    <h1>We Promise keep you the best services</h1>
+                    <p>Deploy your service infrastructure on our fully redundant, high performance cloud platform and
+                        benefit from its high reliability, security and enterprise feature set.</p>
+                    <div class="bnkji">
+                        <button class="btn btn-info">Book Appointment</button>
+                        <a class="btn btn-info" href="{% url 'contact' %}"> Contact us</a>
+                    </div>
+                </div>
+                <div class="col-md-6 slid-img">
+                    <img src="{% static 'assets/assets/images/register.jpg' %}" alt="">
+                </div>
+
+
+
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <section class="with-medical">
+        <div class="container">
+            <div class="inner-title">
+
+                <h2>About Us</h2>
+                <p>Take a look at some of our key features</p>
+            </div>
+            <div class="row">
+
+                <div class="col-lg-6 col-md-12 txtr">
+                    <h4>Why choose to do business with <br>
+                        <span>Panacea </span>
+                    </h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer neque libero, pulvinar et
+                        elementum quis, facilisis eu ante. Mauris non placerat sapien. Pellentesque tempor arcu non odio
+                        scelerisque ullamcorper. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam varius
+                        eros consequat auctor gravida. Fusce tristique lacus at urna sollicitudin pulvinar. Suspendisse
+                        hendrerit ultrices mauris.</p>
+                    <ul>
+                        <li><i class="fa fa-check"></i> Mauris non placerat sapien. Pellentesque </li>
+                        <li><i class="fa fa-check"></i> Fusce tristique lacus at urna sollicitudin </li>
+                        <li><i class="fa fa-check"></i> Orem ipsum dolor sit amet, consectetur</li>
+                        <li><i class="fa fa-check"></i> Pellentesque tempor arcu non </li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-6 col-md-12">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="count-bx">
+                                <h4>22K</h4>
+                                <p>Services Done</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="count-bx">
+                                <h4>11K</h4>
+                                <p>Total Clients</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="count-bx">
+                                <h4>465</h4>
+                                <p>Projects Done</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="count-bx">
+                                <h4>14Y</h4>
+                                <p>Experiance</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- ################# Custom Message Starts Here#######################--->
+    <section class="custom-msg">
+        <div class="container">
+            <div class=" cust-msg">
+                <h2>Login for a Custom Solution</h2>
+                <p>Our technicians can provide you with the best custom made solutions <br> on the market, no matter
+                    whether you're a small business or large enterprise.</p>
+                <div class="btn btn-warning">Get in Touch</div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ################# Our Team Starts Here#######################--->
+
+    <section class="our-team-cover">
+        <div class="container">
+            <div class="inner-title">
+
+                <h2>Our Team</h2>
+                <p>Take a look at our Team</p>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-sm-6">
+                    <div class="our-team">
+                        <div class="pic">
+                            <img src="{% static 'assets/assets/images/testimonial/member-01.jpg' %}" alt="">
+                        </div>
+                        <ul class="social">
+                            <li><a href="#" class="fab fa-facebook"></a></li>
+                            <li><a href="#" class="fab fa-google-plus"></a></li>
+                            <li><a href="#" class="fab fa-twitter"></a></li>
+                        </ul>
+                        <div class="team-content">
+                            <h3 class="title">Williamson</h3>
+                            <span class="post">Web Developer</span>
+                        </div>
+                        <p class="description">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ac eros lacus. Sed commodo
+                            fringilla pharetra. Proin sodales risus et nunc volutpat.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="our-team">
+                        <div class="pic">
+                            <img src="{% static 'assets/assets/images/testimonial/member-02.jpg' %}" alt="">
+                        </div>
+                        <ul class="social">
+                            <li><a href="#" class="fab fa-facebook"></a></li>
+                            <li><a href="#" class="fab fa-google-plus"></a></li>
+                            <li><a href="#" class="fab fa-twitter"></a></li>
+                        </ul>
+                        <div class="team-content">
+                            <h3 class="title">Kristiana</h3>
+                            <span class="post">Web Designer</span>
+                        </div>
+                        <p class="description">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ac eros lacus. Sed commodo
+                            fringilla pharetra. Proin sodales risus et nunc volutpat.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="our-team">
+                        <div class="pic">
+                            <img src="{% static 'assets/assets/images/testimonial/member-03.jpg' %}" alt="">
+                        </div>
+                        <ul class="social">
+                            <li><a href="#" class="fab fa-facebook"></a></li>
+                            <li><a href="#" class="fab fa-google-plus"></a></li>
+                            <li><a href="#" class="fab fa-twitter"></a></li>
+                        </ul>
+                        <div class="team-content">
+                            <h3 class="title">Kristiana</h3>
+                            <span class="post">Web Designer</span>
+                        </div>
+                        <p class="description">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ac eros lacus. Sed commodo
+                            fringilla pharetra. Proin sodales risus et nunc volutpat.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ################# Testimonial Starts Here#######################--->
+    <section class="testimonial-container">
+        <div class="container">
+            <div class="inner-title row">
+                <h2>Testimonial</h2>
+                <p>Take a look at what people say about us</p>
+            </div>
+            <div class="row">
+                <div class="col-md-offset-2 float-auto col-md-10">
+                    <div id="testimonial-slider" class="owl-carousel">
+                        <div class="testimonial">
+                            <div class="pic">
+                                <img src="{% static 'assets/assets/images/testimonial/member-01.jpg' %}" alt="">
+                            </div>
+                            <p class="description">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda deleniti dolor ipsum
+                                molestias mollitia ut. Aliquam aperiam corporis cumque debitis delectus dignissimos.
+                                Lorem ipsum dolor sit amet, consectetur.
+                            </p>
+                            <h3 class="title">williamson
+                                <span class="post"> - Developer</span>
+                            </h3>
+                        </div>
+
+                        <div class="testimonial">
+                            <div class="pic">
+                                <img src="{% static 'assets/assets/images/testimonial/member-02.jpg' %}" alt="">
+                            </div>
+                            <p class="description">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda deleniti dolor ipsum
+                                molestias mollitia ut. Aliquam aperiam corporis cumque debitis delectus dignissimos.
+                                Lorem ipsum dolor sit amet, consectetur.
+                            </p>
+                            <h3 class="title">Kristina
+                                <span class="post"> - Teacher</span>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
