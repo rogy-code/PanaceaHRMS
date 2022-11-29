@@ -133,12 +133,12 @@
                     <a href="{% url 'payslip' salary.id %}" class="btn btn-success btn-icon icon-left print">
                         <i class="fas fa-print"></i> Print</a>
                 </div>
-                <div class="text-md-right">
+                <!-- <div class="text-md-right">
                     
                     <button type="submit" value="click" onclick="generatePDF()"
                         class="btn btn-warning btn-icon icon-left print">
                         <i class="fas fa-print"></i> Print</button>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>
@@ -146,7 +146,7 @@
 
 <script src="https://unpkg.com/jspdf-invoice-template@1.4.0/dist/index.js"></script>
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
     function generatePDF() {
         var pdfObject = jsPDFInvoiceTemplate.default(props);
 
@@ -251,6 +251,6 @@
         pageEnable: true,
         pageLabel: "Page ",
     };
-</script>
+</script> -->
 
 {% endblock %}

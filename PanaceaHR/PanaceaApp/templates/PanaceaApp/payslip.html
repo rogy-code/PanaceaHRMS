@@ -84,7 +84,7 @@
                         </div>
     
                         <div class="row mt-4">
-                            <div class="col-sm-12">
+                            <div class="col-md-10">
                                 <div class="section-title">Salary details</div>
                                 <p class="section-lead">Thanks for your service</p>.</p>
                                 <div class="table-responsive">
@@ -132,13 +132,25 @@
                                         </div>
                                         <div class="invoice-detail-item">
                                             <div class="invoice-detail-name">Total Deductions</div>
-                                            <div class="invoice-detail-value">Ksh. {{salary.total_deductions}}</div>
+                                            <div class="invoice-detail-value">Ksh. {{salary.total_deductions |floatformat:2}}</div>
                                         </div>
                                         <hr class="mt-2 mb-2">
                                         <div class="invoice-detail-item">
-                                            <div class="invoice-detail-name">Net Salary</div>
-                                            <div class="invoice-detail-value invoice-detail-value-lg">Ksh.
+                                            <div class="invoice-detail-name">Pay after tax</div>
+                                            <div class="invoice-detail-value">Ksh.
                                                 {{salary.netSalary}}</div>
+                                        </div>
+    
+                                        <div class="invoice-detail-item">
+                                            <div class="invoice-detail-name">PAYE</div>
+                                            <div class="invoice-detail-value">Ksh.
+                                                {{salary.paye |floatformat:2}}</div>
+                                        </div>
+    
+                                        <div class="invoice-detail-item">
+                                            <div class="invoice-detail-name">Net Pay</div>
+                                            <div class="invoice-detail-value invoice-detail-value-lg">Ksh.
+                                                {{salary.netPaye |floatformat:2}}</div>
                                         </div>
                                     </div>
                                 </div>
