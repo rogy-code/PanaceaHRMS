@@ -3,6 +3,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from . models import Employee, Sallary, Department
 from .forms import EmployeeForm, salaryForm
+from django.contrib.auth import authenticate, login, logout
+
 
 # dashboard views
 def home(request):
@@ -13,6 +15,29 @@ def home(request):
     
     context = {'employees': employees, 'departments': departments, 'salarys': salarys}
     return render(request, 'PanaceaApp/home.html', context)
+
+# employee login
+def empLogin(request):
+    if request.method == 'POST':
+        email = request.POST.get('email').lower()
+        idnumber = request.POST.get('idnumber')
+
+        try:
+            employee = Employee.objects.get(email=email)
+            employee = Employee.objects.get(idnumber=idnumber)
+
+        except:
+            messages.error(request, 'Invalid login credentials')
+            Employee = authenticate(email=email, idnumber=idnumber)
+        
+        if employee is not None:
+            login(request, employee)
+            return redirect("home")
+        else:
+            messages.error(request, 'Invalid login credentials')
+            return redirect('login')
+    context = {}
+    return render(request, 'PanaceaApp/empLogin.html', context)
 
 
 # add employee record

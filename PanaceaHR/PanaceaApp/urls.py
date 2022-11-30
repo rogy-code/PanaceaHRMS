@@ -8,6 +8,9 @@ urlpatterns = [
     path('employeedetail/<str:pk>/', views.employeeDetail, name='employeeDetail'),
     path('deleteEmployee/<str:pk>/', views.deleteEmployee, name='deleteEmployee'),
 
+    # employee login
+    path('empLogin/', views.empLogin, name='empLogin'),
+
     # salary urls
     path('salary/', views.salary, name='salary'),
     path('salaryDetail/<str:pk>/', views.salaryDetail, name='salaryDetail'),
