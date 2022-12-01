@@ -111,61 +111,29 @@
                     }
                 },
                 {
-                    title: "Title",
+                    title: "Name",
                     style: {
-                        width: 120
+                        width: 20
                     }
                 },
 
-                { title: "Total" }
+                { title: "Salary" },
+                { title: "Allowance" },
+                { title: "nhif" },
+                { title: "nssf" },
+                { title: "payee" },
+                { title: "net salary" }
             ],
-            table: [
-                item = [
-                    1,
-                    "Salary",
-                    "{{salary.salary}}"
-                ],
-                [
-                    2,
-                    "Allowances",
-                    "{{salary.allowance}}"
-                ],
-                [
-                    3,
-                    "Nhif",
-                    "{{salary.nhif}}"
-                ],
-                [
-                    4,
-                    "Nssf",
-                    "{{salary.nssf}}"
-                ],
-                [
-                    "",
-                    "",
-                    ""
-                ],
-                [
-                    "",
-                    "Total Income",
-                    "{{salary.total_income}}"
-                ],
-                [
-                    ,
-                    "Total Deduction",
-                    "{{salary.total_deductions}}"
-                ],
-                [
-                    "",
-                    "",
-                    ""
-                ],
-                [
-                    "",
-                    "Net Salary",
-                    "{{salary.netSalary}}"
-                ]
-            ],
+            table: Array.from(Array(10), (salary, index)=>([
+            index + 1,
+            "Rodgers Oduor",
+            40000.00,
+            4995.00,
+            1080.00,
+            200.5,
+            5558.15,
+            37356.85
+        ])),
 
 
             invDescLabel: "Invoice Note",
