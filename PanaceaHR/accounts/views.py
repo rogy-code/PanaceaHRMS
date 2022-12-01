@@ -28,7 +28,7 @@ def about(request):
 def loginView(request):
     page = 'login'
     if request.user.is_authenticated:
-                return redirect('home')
+        return redirect('home')
 
     if request.method == 'POST':
         username = request.POST.get('username').lower()
