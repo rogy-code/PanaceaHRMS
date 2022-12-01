@@ -7,16 +7,21 @@
 <!-- Start app main Content -->
 <div class="main-content">
     <section class="section">
-        
+
         <div class="row row-deck">
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
                         <h4>employees</h4>
                         <div class="card-header-action">
-                    
-                                <button class="btn btn-success" onclick="printDiv()" type="submit">Print Payroll</button>
-                            
+
+
+
+                            <button type="submit" value="click" onclick="generatePDF()"
+                                class="btn btn-success btn-icon icon-left print">
+                                <i class="fas fa-print"></i> Print Payroll</button>
+
+
                             <a href="{% url 'addSalary' %}" class="btn btn-primary">Add Salary Record</a>
                         </div>
                     </div>
@@ -34,27 +39,27 @@
                                         <th>PAYE</th>
                                         <th>Net Salary</th>
                                         <th>Action</th>
-                                        
+
                                     </tr>
                                 </thead>
                                 <tbody>
                                     {% for salary in salarys %}
                                     <tr>
                                         <td class="font-weight-600">{{forloop.counter}}</td>
-                                        <td class="font-weight-600"><a class="font-weight-600" 
-                                            href="{% url 'salaryDetail' salary.id %}">{{salary.employee.fullname}}</a>
+                                        <td class="font-weight-600"><a class="font-weight-600"
+                                                href="{% url 'salaryDetail' salary.id %}">{{salary.employee.fullname}}</a>
                                         </td>
                                         <td class="font-weight-600">Ksh. {{salary.salary}}</td>
                                         <td class="font-weight-600">Ksh. {{salary.allowance}}</td>
                                         <td class="font-weight-600">Ksh. {{salary.nhif |floatformat:2}}</td>
                                         <td class="font-weight-600">Ksh. {{salary.nssf |floatformat:2}}</td>
-                                        <td class="font-weight-600">  
-                                            {% if salary.paye <= 0 %}
-                                            Ksh. 0.00
-                                            {% else %}
-                                            Ksh. {{salary.paye |floatformat:2}}
-                                            {% endif %}
-                                        </td>
+                                        <td class="font-weight-600">
+                                            {% if salary.paye <= 0 %} 
+                                            Ksh. 0.00 
+                                            {% else %} 
+                                            Ksh. 
+                                            {{salary.paye|floatformat:2}} 
+                                            {% endif %} </td>
                                         <td class="font-weight-600">Ksh. {{salary.netPaye |floatformat:2}}</td>
                                         <td>
                                             <a href="{% url 'editSalary' salary.id %}" class="btn btn-primary">edit</a>
@@ -71,7 +76,108 @@
         </div>
     </section>
 </div>
+<script src="https://unpkg.com/jspdf-invoice-template@1.4.0/dist/index.js"></script>
 
+<script type="text/javascript">
+    function generatePDF() {
+        var pdfObject = jsPDFInvoiceTemplate.default(props);
+
+        console.log("Object created: ", pdfObject);
+    }
+
+    var props = {
+        outputType: jsPDFInvoiceTemplate.Save,
+        returnJsPDFDocObject: true,
+        fileName: "{{salary.employee.idnumber}}_Payslip",
+        orientationLandscape: false,
+        compress: true,
+
+        business: {
+            name: "Panacea",
+            address: "Nairobi, Kenya",
+            phone: "+254 721345987",
+            email_1: "info@panacea.co.ke",
+            website: "https://panacea.co.ke",
+        },
+       
+        invoice: {
+            headerBorder: false,
+            tableBodyBorder: false,
+            header: [
+                {
+                    title: "#",
+                    style: {
+                        width: 20
+                    }
+                },
+                {
+                    title: "Title",
+                    style: {
+                        width: 120
+                    }
+                },
+
+                { title: "Total" }
+            ],
+            table: [
+                item = [
+                    1,
+                    "Salary",
+                    "{{salary.salary}}"
+                ],
+                [
+                    2,
+                    "Allowances",
+                    "{{salary.allowance}}"
+                ],
+                [
+                    3,
+                    "Nhif",
+                    "{{salary.nhif}}"
+                ],
+                [
+                    4,
+                    "Nssf",
+                    "{{salary.nssf}}"
+                ],
+                [
+                    "",
+                    "",
+                    ""
+                ],
+                [
+                    "",
+                    "Total Income",
+                    "{{salary.total_income}}"
+                ],
+                [
+                    ,
+                    "Total Deduction",
+                    "{{salary.total_deductions}}"
+                ],
+                [
+                    "",
+                    "",
+                    ""
+                ],
+                [
+                    "",
+                    "Net Salary",
+                    "{{salary.netSalary}}"
+                ]
+            ],
+
+
+            invDescLabel: "Invoice Note",
+            invDesc: "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary.",
+        },
+        footer: {
+            text: "The invoice is created on a computer and is valid without the signature and stamp.",
+        },
+        pageEnable: true,
+        pageLabel: "Page ",
+    };
+</script>
 
 
 {% endblock %}

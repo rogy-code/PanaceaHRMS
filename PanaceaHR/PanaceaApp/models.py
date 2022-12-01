@@ -127,4 +127,4 @@ class Sallary(models.Model):
         if self.paye <= 0:
             return(self.netSalary)
         else:
-            return(self.netSalary- self.paye)
+            return(self.netSalary - self.paye)
