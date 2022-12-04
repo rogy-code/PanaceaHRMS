@@ -9,6 +9,9 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 # from .models import User
 from .forms import UserForm
+from .forms import NewUserForm
+from django.contrib.auth import login
+from django.contrib.auth.forms import AuthenticationForm
 # from django.contrib.auth import login as auth_login
 
 # Create your views here.
@@ -54,3 +57,16 @@ def logoutUser(request):
     logout(request)
     messages.success(request, 'User logged out')
     return redirect('index')
+    
+def registerPage(request):
+    if request.method == "POST":
+        form = NewUserForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user, backend='django.contrib.auth.backends.ModelBackend')
+            messages.success(request, "Registration successful.")
+            return redirect('home')
+        messages.error(
+            request, "Unsuccessful registration, please valid credentials!!!")
+    form = NewUserForm()
+    return render(request=request, template_name="accounts/register.html", context={"register_form": form})

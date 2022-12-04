@@ -1,0 +1,112 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- auth-login.html  Tue, 07 Jan 2020 03:39:47 GMT -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+    <title>Login &mdash; PanaceaHR</title>
+
+    <!-- General CSS Files -->
+    <link rel="stylesheet" href="{% static 'assets/modules/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/modules/fontawesome/css/all.min.css' %}">
+
+    <!-- CSS Libraries -->
+    <link rel="stylesheet" href="{% static 'assets/modules/bootstrap-social/bootstrap-social.css' %}">
+
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/style.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/components.min.css' %}">
+</head>
+
+<body class="layout-4">
+
+    <div id="app">
+        <section class="section">
+            <div class="container mt-5">
+                <div class="row">
+                    <div
+                        class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-8 offset-lg-2 col-xl-8 offset-xl-2">
+
+                        <div class="card card-primary">
+                            {% if messages %}
+                            <ul class="messages">
+                              {% for message in messages %}
+                              <li {% if message.tags %} class="{{ message.tags }} bg-success text-center text-light p-2 rounded-pill" {% endif %}>{{ message }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %} 
+                            
+                            <div class="card-header">
+                                
+                                    <h4>Panacea Human Resource System</h4>
+                               
+                                
+                            </div>
+                            <div class="card-body">
+                                <form method="POST">
+                                    {% csrf_token %}
+
+                                    <div class="form-group">
+                                        <label for="frist_name">Username</label>
+                                        <input id="username" type="text" class="form-control" name="username"
+                                            autofocus>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label for="email">Email</label>
+                                        <input id="email" type="email" class="form-control" name="email">
+                                        <div class="invalid-feedback">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-6">
+                                            <label for="password" class="d-block">Password</label>
+                                            <input id="password" type="password" class="form-control pwstrength"
+                                                data-indicator="pwindicator" name="password1">
+                                            <div id="pwindicator" class="pwindicator">
+                                                <div class="bar"></div>
+                                                <div class="label"></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-6">
+                                            <label for="password2" class="d-block">Password Confirmation</label>
+                                            <input id="password2" type="password" class="form-control"
+                                                name="password2">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-primary btn-lg btn-block">Register</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="simple-footer">
+                            Copyright &copy; CodiePie 2020
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- General JS Scripts -->
+    <script src="{% static 'assets/bundles/lib.vendor.bundle.js' %}"></script>
+    <script src="{% static 'js/CodiePie.js' %}"></script>
+
+    <!-- JS Libraies -->
+
+    <!-- Page Specific JS File -->
+
+    <!-- Template JS File -->
+    <script src="{% static 'js/scripts.js' %}"></script>
+    <script src="{% static 'js/custom.js' %}"></script>
+</body>
+
+<!-- auth-login.html  Tue, 07 Jan 2020 03:39:47 GMT -->
+
+</html>
