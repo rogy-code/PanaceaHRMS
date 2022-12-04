@@ -31,7 +31,7 @@ INSTALLED_APPS = [
     'PanaceaApp',
     'accounts',
 
-    'crispy_forms',
+    # 'crispy_forms',
 
     
 ]
